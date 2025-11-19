@@ -12,24 +12,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // 20 Unique Reviews
     const reviewsData = [
         { name: "James T.", country: "USA", text: "Priyo is a genius. The jar label stood out immediately on Amazon.", stars: 5 },
-        { name: "Sarah Jenkins", country: "UK", text: "Fast, professional, and the 3D mockup was incredibly realistic.", stars: 4 },
+        { name: "Sarah Jenkins", country: "UK", text: "Fast, professional, and the 3D mockup was incredibly realistic.", stars: 5 },
         { name: "Marco Rossi", country: "Italy", text: "Understood the wine aesthetic perfectly. Classy and elegant design.", stars: 5 },
-        { name: "EliteSupps", country: "Australia", text: "Best label designer on Fiverr. Boosted our CTR by 20%.", stars: 3 },
+        { name: "EliteSupps", country: "Australia", text: "Best label designer on Fiverr. Boosted our CTR by 20%.", stars: 5 },
         { name: "Elena B.", country: "Germany", text: "Very patient with my revisions. The final print file was perfect.", stars: 5 },
         { name: "David Chen", country: "Canada", text: "Clean, modern, and compliant with FDA regulations. Highly recommend.", stars: 5 },
         { name: "Sophie M.", country: "France", text: "J'adore! The cosmetic packaging looks so expensive now.", stars: 5 },
         { name: "Mike Ross", country: "USA", text: "Delivered 2 days early. The source files were organized and easy to use.", stars: 5 },
-        { name: "OrganicRoots", country: "USA", text: "Captured our eco-friendly vibe perfectly. Will order again.", stars: 4 },
+        { name: "OrganicRoots", country: "USA", text: "Captured our eco-friendly vibe perfectly. Will order again.", stars: 5 },
         { name: "Lars Jensen", country: "Denmark", text: "Minimalist design at its finest. Priyo knows visual hierarchy.", stars: 5 },
         { name: "Kenta Y.", country: "Japan", text: "Very professional communication. High quality work.", stars: 5 },
         { name: "BeardCo", country: "UK", text: "Made our beard oil bottles look masculine and premium. Thanks!", stars: 5 },
         { name: "Maria G.", country: "Spain", text: "Beautiful use of colors. The gradient work is stunning.", stars: 5 },
         { name: "Tom Baker", country: "USA", text: "Straightforward process. No headaches. Great result.", stars: 5 },
-        { name: "VapeNation", country: "USA", text: "Sick designs for our e-liquid line. Totally compliant too.", stars: 4 },
+        { name: "VapeNation", country: "USA", text: "Sick designs for our e-liquid line. Totally compliant too.", stars: 5 },
         { name: "Anna S.", country: "Sweden", text: "Elegant typography. He has a great eye for fonts.", stars: 5 },
         { name: "CoffeeBros", country: "Brazil", text: "The coffee bag design helps us sell more beans. Amazing ROI.", stars: 5 },
         { name: "PetTreats", country: "USA", text: "Cute and professional. Exactly what we needed for our dog treats.", stars: 5 },
-        { name: "FitLife", country: "UK", text: "The protein powder label looks better than the big brands.", stars: 3 },
+        { name: "FitLife", country: "UK", text: "The protein powder label looks better than the big brands.", stars: 5 },
         { name: "Lucas P.", country: "Argentina", text: "Great value for money. High-end agency quality.", stars: 5 }
     ];
 
