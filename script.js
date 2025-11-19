@@ -1,43 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // === CONFIG ===
     const username = '0bl1vyx'; 
     const repoName = 'label-portfolio';
     const branch = 'main';
     
-    // === 1. REALISTIC REVIEWS (Mixed Ratings) ===
+    // === 1. CLIENT REVIEWS (Updated with your specific texts) ===
     const reviewsTrack = document.getElementById('reviews-track');
     
-    // Notice the mix of 5, 4, and 3 stars to make it believable
     const reviewsData = [
-        { name: "James T.", stars: 5, text: "Priyo is a genius. The jar label stood out immediately on Amazon." },
+        { name: "Amazon Seller", stars: 5, text: "Exactly what I needed. Clean, modern, and 100% print-ready. My manufacturer approved it instantly." },
+        { name: "Supplement Brand", stars: 5, text: "Best label designer I’ve worked with. He understands compliance better than most agencies." },
+        { name: "Food Startup", stars: 5, text: "Professional, fast, and detail-oriented. Saved me days of back-and-forth with my print shop." },
         { name: "Sarah Jenkins", stars: 4, text: "Great design work. Took a little longer than expected for the revision, but the final result was perfect." },
-        { name: "Marco Rossi", stars: 5, text: "Understood the wine aesthetic perfectly. Classy and elegant design." },
-        { name: "EliteSupps", stars: 5, text: "Best label designer on Fiverr. Boosted our CTR by 20%." },
-        { name: "David Chen", stars: 3, text: "Good quality, but the time zone difference made communication a bit slow." }, // Honest review builds trust
-        { name: "Elena B.", stars: 5, text: "Very patient with my revisions. The final print file was technically compliant." },
-        { name: "VapeNation", stars: 5, text: "Sick designs for our e-liquid line. Totally compliant with EU laws." },
-        { name: "Mike Ross", stars: 4, text: "Solid work. The 3D mockup helped us sell the product before manufacturing." }
+        { name: "EliteSupps", stars: 5, text: "Boosted our shelf presence immediately. The metallic foil setup was perfect." },
+        { name: "David Chen", stars: 5, text: "I appreciate the focus on FDA guidelines. It gives me peace of mind." }, 
+        { name: "VapeNation", stars: 5, text: "Sick designs for our e-liquid line. Totally compliant with EU laws." }
     ];
 
-    // Create HTML for reviews
-    const fullList = [...reviewsData, ...reviewsData]; // Duplicate for loop
+    // Render Marquee
+    const fullList = [...reviewsData, ...reviewsData]; 
     
     reviewsTrack.innerHTML = fullList.map(r => {
-        // Generate star HTML
         let starsHtml = '';
         for(let i=0; i<5; i++) {
             if(i < r.stars) starsHtml += '<i class="fa-solid fa-star text-yellow-500"></i>';
             else starsHtml += '<i class="fa-solid fa-star text-gray-700"></i>';
         }
-
         return `
-            <div class="w-[300px] bg-card border border-white/10 p-6 rounded-xl flex-shrink-0">
+            <div class="w-[300px] bg-[#141414] border border-white/10 p-6 rounded-xl flex-shrink-0">
                 <div class="flex gap-1 text-xs mb-3">${starsHtml}</div>
                 <p class="text-gray-300 text-sm mb-4 leading-relaxed">"${r.text}"</p>
                 <div class="flex items-center gap-3 border-t border-white/5 pt-3">
                     <div class="w-8 h-8 rounded-full bg-brand/20 text-brand flex items-center justify-center font-bold text-xs">
-                        ${r.name.charAt(0)}
+                        <i class="fa-solid fa-user"></i>
                     </div>
                     <div class="text-xs font-bold text-white">${r.name}</div>
                 </div>
@@ -45,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }).join('');
 
-    // === 2. GITHUB PORTFOLIO LOADER (With Text Parsing) ===
+    // === 2. GITHUB LOADER ===
     const container = document.getElementById('project-container');
 
     async function loadProjects() {
@@ -60,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const imageFiles = files.filter(file => file.name.match(/\.(jpg|jpeg|png|gif|webp)$/i));
 
             if (imageFiles.length === 0) {
-                container.innerHTML = '<div class="text-gray-500">No projects found. Upload images to /projects folder.</div>';
+                container.innerHTML = '<div class="text-gray-500">No projects found in /projects folder.</div>';
                 return;
             }
 
@@ -70,47 +65,44 @@ document.addEventListener('DOMContentLoaded', () => {
                 const txtFileObj = files.find(f => f.name === txtFileName);
 
                 let title = baseName.replace(/-/g, ' ');
-                let desc = "Professional packaging design.";
+                let desc = "Premium Packaging Design.";
 
-                // Fetch Description if exists
                 if (txtFileObj) {
                     try {
                         const txtRes = await fetch(txtFileObj.download_url);
                         const txtContent = await txtRes.text();
                         const lines = txtContent.split('\n').filter(l => l.trim() !== '');
                         if (lines.length > 0) {
-                            title = lines[0]; // First line is title
-                            desc = lines.slice(1).join('<br>'); // Rest is desc
+                            title = lines[0]; 
+                            desc = lines.slice(1).join('<br>'); 
                         }
-                    } catch (e) { console.log("No text file found"); }
+                    } catch (e) { console.log("No text file"); }
                 }
 
                 const card = document.createElement('div');
                 card.className = 'masonry-item group relative rounded-xl overflow-hidden bg-card border border-white/10 cursor-pointer reveal';
-                
                 card.innerHTML = `
                     <div class="relative overflow-hidden">
-                        <img src="${imgFile.download_url}" alt="${title}" class="w-full h-auto block transition duration-700 group-hover:scale-110 group-hover:opacity-80">
+                        <img src="${imgFile.download_url}" alt="${title}" class="w-full h-auto block transition duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                             <div>
-                                <span class="text-brand text-[10px] font-bold uppercase tracking-widest">Label Design</span>
+                                <span class="text-brand text-[10px] font-bold uppercase tracking-widest">Packaging</span>
                                 <h3 class="text-white font-bold text-lg capitalize">${title}</h3>
                             </div>
                         </div>
                     </div>
                 `;
-                
                 card.addEventListener('click', () => openModal(imgFile.download_url, title, desc));
                 container.appendChild(card);
             }
             initScrollReveal();
         } catch (error) {
             console.error(error);
-            container.innerHTML = '<div class="p-4 text-red-400 border border-red-900 bg-red-900/10 rounded">Error loading Github data. Check console.</div>';
+            container.innerHTML = '<div class="p-4 text-red-400 border border-red-900 bg-red-900/10 rounded">Error loading Github data.</div>';
         }
     }
 
-    // === 3. MODAL LOGIC ===
+    // === 3. UTILS ===
     const modal = document.getElementById('image-modal');
     const modalImg = document.getElementById('modal-img');
     const modalTitle = document.getElementById('modal-title');
@@ -134,7 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = 'auto';
     };
 
-    // === 4. SCROLL REVEAL & FAQ ===
     function initScrollReveal() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -148,12 +139,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.toggleFaq = (element) => {
         const isActive = element.classList.contains('active');
-        // Close all
         document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
-        // Toggle clicked
         if (!isActive) element.classList.add('active');
     };
 
-    // Run
     loadProjects();
 });
