@@ -2,7 +2,7 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Priyo D | Premium Label Design Specialist</title>
     <meta name="description" content="Specialized label and sticker design for supplements, cosmetics, and food brands. FDA compliant and print-ready.">
     
@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- FONTS: Outfit (Headings) + Inter (Readability) -->
+    <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     
     <script>
@@ -24,8 +24,11 @@
                     colors: {
                         'bg-main': '#050505',
                         'bg-card': '#0f0f0f',
-                        'accent': '#7c3aed', /* Violet */
-                        'accent-blue': '#3b82f6', /* Blue */
+                        'accent': '#7c3aed',
+                        'accent-blue': '#3b82f6',
+                    },
+                    screens: {
+                        'xs': '475px',
                     }
                 }
             }
@@ -36,118 +39,95 @@
 
     <!-- Navbar -->
     <nav id="navbar" class="fixed w-full z-50 top-0 transition-all duration-300 border-b border-white/5 bg-bg-main/80 backdrop-blur-xl">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- NEW LOGO -->
-            <div class="text-xl md:text-2xl font-heading font-bold tracking-tight text-white uppercase">
-                PRIYO <span class="text-accent">D.</span> LABELS
-            </div>
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center">
+            <!-- LOGO IMAGE -->
+            <a href="#" class="block">
+                <img src="logo.png" alt="Priyo D Labels" class="h-10 md:h-12 w-auto object-contain">
+            </a>
             
-            <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="bg-white text-black hover:bg-accent hover:text-white transition-colors px-6 py-2 rounded-full text-sm font-bold flex items-center gap-2">
-                <i class="fa-solid fa-circle-check"></i> Hire Me
+            <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="bg-white text-black hover:bg-accent hover:text-white transition-colors px-4 md:px-6 py-2 rounded-full text-xs md:text-sm font-bold flex items-center gap-2">
+                <i class="fa-solid fa-circle-check"></i> <span class="hidden xs:inline">Hire Me</span><span class="inline xs:hidden">Hire</span>
             </a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="min-h-screen flex flex-col justify-center items-center text-center px-4 pt-20 relative overflow-hidden">
+    <header class="min-h-screen flex flex-col justify-center items-center text-center px-4 pt-24 md:pt-20 relative overflow-hidden">
         
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <!-- Glow -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-accent/10 rounded-full blur-[60px] md:blur-[100px] pointer-events-none"></div>
 
         <!-- Stats -->
-        <div class="flex flex-wrap justify-center gap-3 mb-8 reveal-element">
+        <div class="flex flex-wrap justify-center gap-2 md:gap-3 mb-6 md:mb-8 reveal-element">
             <div class="glass-badge"><i class="fa-solid fa-star text-yellow-400"></i> 4.9 Rating</div>
             <div class="glass-badge"><i class="fa-solid fa-tag text-blue-400"></i> Label Specialist</div>
-            <div class="glass-badge"><i class="fa-solid fa-check-circle text-green-400"></i> FDA Compliant</div>
+            <div class="glass-badge hidden xs:flex"><i class="fa-solid fa-check-circle text-green-400"></i> FDA Compliant</div>
         </div>
 
-        <!-- NEW HEADLINES -->
-        <h1 class="font-heading text-5xl md:text-7xl font-bold mb-6 leading-tight text-white reveal-element delay-100">
+        <h1 class="font-heading text-4xl sm:text-5xl md:text-7xl font-bold mb-4 md:mb-6 leading-tight text-white reveal-element delay-100">
             Premium Label Designs <br> 
             That <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-blue">Sell Products.</span>
         </h1>
         
-        <p class="text-gray-400 text-lg max-w-2xl mb-10 reveal-element delay-200 font-light leading-relaxed">
+        <p class="text-gray-400 text-base md:text-lg max-w-xl md:max-w-2xl mb-8 md:mb-10 reveal-element delay-200 font-light leading-relaxed px-2">
             Specialized in supplement, cosmetic, and food label design. <br class="hidden md:block">
-            <span class="text-white font-medium">Print-ready</span> | <span class="text-white font-medium">FDA-compliant</span> | <span class="text-white font-medium">Premium 3D mockups</span>
+            <span class="text-white font-medium">Print-ready</span> | <span class="text-white font-medium">Compliant</span> | <span class="text-white font-medium">3D Mockups</span>
         </p>
         
-        <div class="flex flex-col sm:flex-row gap-4 reveal-element delay-300 z-10">
-            <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="bg-accent hover:bg-accent-blue text-white px-8 py-3 rounded-lg font-bold transition-all shadow-lg shadow-accent/20 flex items-center justify-center gap-2">
+        <div class="flex flex-col sm:flex-row gap-3 md:gap-4 w-full sm:w-auto reveal-element delay-300 z-10">
+            <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="bg-accent hover:bg-accent-blue text-white px-8 py-3.5 rounded-lg font-bold transition-all shadow-lg shadow-accent/20 flex items-center justify-center gap-2 w-full sm:w-auto">
                 Order Label Design <i class="fa-solid fa-arrow-right"></i>
             </a>
-            <a href="#portfolio" class="border border-white/10 hover:border-white/30 bg-white/5 text-white px-8 py-3 rounded-lg font-bold transition-all flex items-center justify-center gap-2">
+            <a href="#portfolio" class="border border-white/10 hover:border-white/30 bg-white/5 text-white px-8 py-3.5 rounded-lg font-bold transition-all flex items-center justify-center gap-2 w-full sm:w-auto">
                 View Label Gallery
+            </a>
+        </div>
+        
+        <!-- Email Quick Link -->
+        <div class="mt-8 reveal-element delay-500">
+            <a href="mailto:prystudio@proton.me" class="text-sm text-gray-500 hover:text-accent transition flex items-center gap-2">
+                <i class="fa-solid fa-envelope"></i> prystudio@proton.me
             </a>
         </div>
     </header>
 
-    <!-- SPECIALIST SECTION (Why Hire a Label Specialist?) -->
-    <section class="py-20 border-t border-white/5 bg-bg-card relative">
+    <!-- Why Hire (Responsive Grid) -->
+    <section class="py-16 md:py-24 border-t border-white/5 bg-bg-card relative">
         <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16">
+            <div class="text-center mb-12 md:mb-16">
                 <span class="text-accent font-bold tracking-widest text-xs uppercase mb-2 block">Expertise</span>
-                <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">Why Hire a Label Specialist?</h2>
-                <p class="text-gray-400 mt-2">Don't risk your print run with a generalist designer.</p>
+                <h2 class="font-heading text-2xl md:text-4xl font-bold text-white">Why Hire a Specialist?</h2>
+                <p class="text-gray-400 mt-2 text-sm md:text-base">Don't risk your print run with a generalist.</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Point 1 -->
-                <div class="p-8 rounded-2xl bg-bg-main border border-white/5 hover:border-accent/50 transition group relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition text-6xl text-accent"><i class="fa-solid fa-print"></i></div>
-                    <h3 class="font-heading text-xl font-bold text-white mb-3">Print Ready & Compliant</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">I deliver fully compliant labels with correct bleed lines, font sizes, ingredient layouts, and barcode placement. No printing errors.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <div class="p-6 md:p-8 rounded-2xl bg-bg-main border border-white/5 hover:border-accent/50 transition group relative">
+                    <i class="fa-solid fa-print text-4xl text-accent mb-4 block"></i>
+                    <h3 class="font-heading text-lg md:text-xl font-bold text-white mb-3">Print Ready & Compliant</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">I deliver fully compliant labels with correct bleed lines, font sizes, and barcode placement.</p>
                 </div>
                 
-                <!-- Point 2 -->
-                <div class="p-8 rounded-2xl bg-bg-main border border-white/5 hover:border-accent-blue/50 transition group relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition text-6xl text-accent-blue"><i class="fa-solid fa-layer-group"></i></div>
-                    <h3 class="font-heading text-xl font-bold text-white mb-3">Consistent Variant Systems</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">Launching 5 flavors? I build label systems that scale to 5, 10, or 50 product variations without losing brand consistency.</p>
+                <div class="p-6 md:p-8 rounded-2xl bg-bg-main border border-white/5 hover:border-accent-blue/50 transition group relative">
+                    <i class="fa-solid fa-layer-group text-4xl text-accent-blue mb-4 block"></i>
+                    <h3 class="font-heading text-lg md:text-xl font-bold text-white mb-3">Variant Systems</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">Launching 5 flavors? I build systems that scale to 10 or 50 products seamlessly.</p>
                 </div>
                 
-                <!-- Point 3 -->
-                <div class="p-8 rounded-2xl bg-bg-main border border-white/5 hover:border-green-500/50 transition group relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition text-6xl text-green-500"><i class="fa-solid fa-gem"></i></div>
-                    <h3 class="font-heading text-xl font-bold text-white mb-3">Premium Perceived Value</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">Your label is your salesman. My designs use visual hierarchy and premium aesthetics to instantly increase shelf appeal and trust.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEW LABEL SERVICES LIST -->
-    <section class="py-24 bg-bg-main">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row gap-12 items-start">
-                <div class="w-full md:w-1/3">
-                    <h2 class="font-heading text-4xl font-bold text-white mb-6">Label Design <br> Services</h2>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-8">
-                        I focus exclusively on single-surface labels and stickers. Whether it's a bottle, jar, or pouch, I make it look world-class.
-                    </p>
-                    <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="text-accent font-bold hover:text-white transition flex items-center gap-2">
-                        Check Pricing <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="service-item"><i class="fa-solid fa-check text-accent mr-3"></i>Supplement Label Design</div>
-                    <div class="service-item"><i class="fa-solid fa-check text-accent mr-3"></i>Cosmetic & Skincare Labels</div>
-                    <div class="service-item"><i class="fa-solid fa-check text-accent mr-3"></i>Food & Beverage Labels</div>
-                    <div class="service-item"><i class="fa-solid fa-check text-accent mr-3"></i>Bottle, Jar & Tube Labels</div>
-                    <div class="service-item"><i class="fa-solid fa-check text-accent mr-3"></i>Front/Back Label Systems</div>
-                    <div class="service-item"><i class="fa-solid fa-check text-accent mr-3"></i>Variant-based Systems</div>
-                    <div class="service-item"><i class="fa-solid fa-check text-accent mr-3"></i>3D Product Mockups</div>
-                    <div class="service-item"><i class="fa-solid fa-check text-accent mr-3"></i>Pouch & Bag Stickers</div>
+                <div class="p-6 md:p-8 rounded-2xl bg-bg-main border border-white/5 hover:border-green-500/50 transition group relative">
+                    <i class="fa-solid fa-gem text-4xl text-green-500 mb-4 block"></i>
+                    <h3 class="font-heading text-lg md:text-xl font-bold text-white mb-3">Premium Value</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">Visual hierarchy and premium aesthetics that instantly increase shelf appeal and trust.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="max-w-7xl mx-auto px-4 py-32 border-t border-white/5">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+    <section id="portfolio" class="max-w-7xl mx-auto px-4 py-16 md:py-32 border-t border-white/5">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-12 gap-4">
             <div>
                 <span class="text-accent font-bold tracking-widest text-xs uppercase mb-2 block">Selected Works</span>
-                <h2 class="font-heading text-4xl md:text-5xl font-bold text-white">Recent Labels</h2>
+                <h2 class="font-heading text-3xl md:text-5xl font-bold text-white">Recent Labels</h2>
             </div>
             <a href="https://github.com/0bl1vyx/label-portfolio/tree/main/projects" target="_blank" class="text-sm text-gray-500 hover:text-white transition flex items-center gap-2">
                 <i class="fa-brands fa-github"></i> Source Folder
@@ -159,68 +139,59 @@
         </div>
     </section>
 
-    <!-- ABOUT ME SECTION -->
-    <section class="py-24 bg-bg-card relative overflow-hidden">
-        <div class="max-w-4xl mx-auto px-6 relative z-10">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="w-32 h-32 md:w-48 md:h-48 rounded-full bg-gradient-to-br from-accent to-blue-600 p-1 flex-shrink-0">
-                    <!-- Avatar Placeholder -->
-                    <div class="w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden">
-                         <span class="font-heading font-bold text-4xl text-white">P</span>
-                    </div>
-                </div>
-                <div>
-                    <span class="text-accent font-bold tracking-widest text-xs uppercase mb-2 block">About Me</span>
-                    <h2 class="font-heading text-3xl font-bold text-white mb-6">Hi, I'm Priyo.</h2>
-                    <p class="text-gray-300 leading-relaxed mb-6">
-                        I am a specialist label designer with over 2 years of experience helping brands launch products that stick. I don't do generic graphic design; I focus entirely on <strong>product labeling</strong>.
-                    </p>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-8">
-                        I understand that a label isn't just a sticker—it's the primary touchpoint for your customer. Whether it's navigating FDA compliance for supplements or creating a luxury texture for cosmetics, I handle the technical details so you can focus on selling.
-                    </p>
-                    <div class="flex gap-8">
-                        <div><span class="block text-2xl font-bold text-white">2+</span><span class="text-xs text-gray-500 uppercase">Years Exp</span></div>
-                        <div><span class="block text-2xl font-bold text-white">100+</span><span class="text-xs text-gray-500 uppercase">Projects</span></div>
-                        <div><span class="block text-2xl font-bold text-white">4.9</span><span class="text-xs text-gray-500 uppercase">Rating</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Reviews Section -->
-    <section class="py-24 bg-bg-main border-y border-white/5 overflow-hidden">
-        <div class="text-center mb-12 px-4">
-            <h2 class="font-heading text-3xl text-white mb-4">Client Feedback</h2>
-            <p class="text-gray-400">Real reviews from label design projects.</p>
+    <section class="py-16 md:py-24 bg-bg-main border-y border-white/5 overflow-hidden">
+        <div class="text-center mb-10 px-4">
+            <h2 class="font-heading text-2xl md:text-3xl text-white mb-3">Client Feedback</h2>
+            <p class="text-gray-400 text-sm">Real reviews from 100+ projects.</p>
         </div>
         <div class="marquee-wrapper">
             <div class="marquee-track" id="reviews-track"></div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-black pt-24 pb-10 border-t border-white/10">
-        <div class="max-w-5xl mx-auto px-6 text-center">
-            <h2 class="font-heading text-4xl md:text-6xl font-bold text-white mb-6">Ready for labels that<br>actually sell?</h2>
-            <p class="text-gray-400 text-lg mb-10">Let's build your product's identity.</p>
+    <!-- Connect / Footer -->
+    <footer class="bg-black pt-16 md:pt-24 pb-10 border-t border-white/10">
+        <div class="max-w-5xl mx-auto px-4 md:px-6 text-center">
+            <h2 class="font-heading text-3xl md:text-6xl font-bold text-white mb-6">Ready to launch?</h2>
+            <p class="text-gray-400 text-base md:text-lg mb-10">Choose your preferred platform to connect.</p>
             
-            <div class="flex flex-wrap justify-center gap-4 mb-16">
-                <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="bg-[#1DBF73] hover:bg-green-600 text-white px-10 py-4 rounded-lg font-bold flex items-center gap-2 transition hover:-translate-y-1 shadow-lg shadow-green-900/20">
-                    <i class="fa-solid fa-circle-check"></i> Order Label Design
+            <!-- Main CTAs -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="bg-[#1DBF73] hover:bg-green-600 text-white px-8 py-3 rounded-lg font-bold flex items-center gap-2 transition hover:-translate-y-1 w-full sm:w-auto justify-center">
+                    <i class="fa-solid fa-circle-check"></i> Fiverr
                 </a>
-                <a href="#portfolio" class="bg-white/5 border border-white/10 hover:bg-white/10 text-white px-10 py-4 rounded-lg font-bold flex items-center gap-2 transition hover:-translate-y-1">
-                    View Label Gallery
+                <a href="mailto:prystudio@proton.me" class="bg-white/5 border border-white/10 hover:bg-white/10 text-white px-8 py-3 rounded-lg font-bold flex items-center gap-2 transition hover:-translate-y-1 w-full sm:w-auto justify-center">
+                    <i class="fa-solid fa-envelope"></i> Email Me
                 </a>
             </div>
 
-            <div class="border-t border-white/5 pt-8 text-sm text-gray-600 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p>&copy; 2025 Priyo D. All rights reserved.</p>
-                <div class="flex gap-6">
-                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
-                </div>
+            <!-- Secondary Socials Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mb-16">
+                <a href="https://contra.com/testuser" target="_blank" class="p-4 rounded-xl bg-bg-card border border-white/5 hover:border-[#7c3aed] hover:text-[#7c3aed] transition flex flex-col items-center gap-2 group">
+                    <i class="fa-solid fa-bolt text-xl text-gray-500 group-hover:text-[#7c3aed]"></i>
+                    <span class="text-sm font-bold">Contra</span>
+                </a>
+                <a href="https://freelancer.com/u/testuser" target="_blank" class="p-4 rounded-xl bg-bg-card border border-white/5 hover:border-[#29b2fe] hover:text-[#29b2fe] transition flex flex-col items-center gap-2 group">
+                    <i class="fa-solid fa-dove text-xl text-gray-500 group-hover:text-[#29b2fe]"></i>
+                    <span class="text-sm font-bold">Freelancer</span>
+                </a>
+                <a href="https://linkedin.com/in/testuser" target="_blank" class="p-4 rounded-xl bg-bg-card border border-white/5 hover:border-[#0077b5] hover:text-[#0077b5] transition flex flex-col items-center gap-2 group">
+                    <i class="fa-brands fa-linkedin text-xl text-gray-500 group-hover:text-[#0077b5]"></i>
+                    <span class="text-sm font-bold">LinkedIn</span>
+                </a>
+                <a href="https://twitter.com/testuser" target="_blank" class="p-4 rounded-xl bg-bg-card border border-white/5 hover:border-white hover:text-white transition flex flex-col items-center gap-2 group">
+                    <i class="fa-brands fa-x-twitter text-xl text-gray-500 group-hover:text-white"></i>
+                    <span class="text-sm font-bold">X / Twitter</span>
+                </a>
+                <a href="https://instagram.com/testuser" target="_blank" class="p-4 rounded-xl bg-bg-card border border-white/5 hover:border-pink-500 hover:text-pink-500 transition flex flex-col items-center gap-2 group col-span-2 sm:col-span-4">
+                    <i class="fa-brands fa-instagram text-xl text-gray-500 group-hover:text-pink-500"></i>
+                    <span class="text-sm font-bold">Instagram</span>
+                </a>
+            </div>
+
+            <div class="border-t border-white/5 pt-8 text-sm text-gray-600">
+                <p>&copy; 2025 Priyo D. Labels. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -228,13 +199,13 @@
     <!-- Modal -->
     <div id="image-modal" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-md hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4" onclick="closeModal()">
         <div class="relative max-w-6xl w-full max-h-[90vh] flex flex-col md:flex-row gap-8" onclick="event.stopPropagation()">
-            <button onclick="closeModal()" class="absolute -top-10 right-0 text-white hover:text-accent text-3xl">&times;</button>
+            <button onclick="closeModal()" class="absolute -top-10 right-0 text-white hover:text-accent text-3xl z-50">&times;</button>
             
             <div class="w-full md:w-2/3 flex items-center justify-center bg-black/50 rounded-xl p-2">
                 <img id="modal-img" src="" class="max-h-[80vh] max-w-full object-contain rounded-lg shadow-2xl">
             </div>
             
-            <div class="w-full md:w-1/3 bg-[#111] p-8 rounded-xl border border-white/10 flex flex-col justify-center">
+            <div class="w-full md:w-1/3 bg-[#111] p-6 md:p-8 rounded-xl border border-white/10 flex flex-col justify-center">
                 <div class="mb-auto">
                     <span class="text-accent text-xs font-bold tracking-widest uppercase mb-2 block">Label Details</span>
                     <h3 id="modal-title" class="font-heading text-2xl text-white mb-4 capitalize">Title</h3>
