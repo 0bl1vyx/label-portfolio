@@ -5,34 +5,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const repoName = 'label-portfolio';
     const branch = 'main';
     
-    // === 1. CUSTOM CURSOR LOGIC ===
-    const cursor = document.querySelector('.custom-cursor');
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-    });
+    // === 1. REALISTIC REVIEWS (Mixed Ratings) ===
+    const reviewsTrack = document.getElementById('reviews-track');
     
-    // Hover effect for interactive elements
-    // Using 'mouseover' with delegation for dynamically added elements
-    document.body.addEventListener('mouseover', (e) => {
-        if (e.target.closest('a, button, .hover-trigger, .masonry-item')) {
-            cursor.classList.add('hovered');
-        } else {
-            cursor.classList.remove('hovered');
+    // Notice the mix of 5, 4, and 3 stars to make it believable
+    const reviewsData = [
+        { name: "James T.", stars: 5, text: "Priyo is a genius. The jar label stood out immediately on Amazon." },
+        { name: "Sarah Jenkins", stars: 4, text: "Great design work. Took a little longer than expected for the revision, but the final result was perfect." },
+        { name: "Marco Rossi", stars: 5, text: "Understood the wine aesthetic perfectly. Classy and elegant design." },
+        { name: "EliteSupps", stars: 5, text: "Best label designer on Fiverr. Boosted our CTR by 20%." },
+        { name: "David Chen", stars: 3, text: "Good quality, but the time zone difference made communication a bit slow." }, // Honest review builds trust
+        { name: "Elena B.", stars: 5, text: "Very patient with my revisions. The final print file was technically compliant." },
+        { name: "VapeNation", stars: 5, text: "Sick designs for our e-liquid line. Totally compliant with EU laws." },
+        { name: "Mike Ross", stars: 4, text: "Solid work. The 3D mockup helped us sell the product before manufacturing." }
+    ];
+
+    // Create HTML for reviews
+    const fullList = [...reviewsData, ...reviewsData]; // Duplicate for loop
+    
+    reviewsTrack.innerHTML = fullList.map(r => {
+        // Generate star HTML
+        let starsHtml = '';
+        for(let i=0; i<5; i++) {
+            if(i < r.stars) starsHtml += '<i class="fa-solid fa-star text-yellow-500"></i>';
+            else starsHtml += '<i class="fa-solid fa-star text-gray-700"></i>';
         }
-    });
 
-    // === 2. PRELOADER REMOVAL ===
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            document.getElementById('preloader').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('preloader').style.display = 'none';
-            }, 800);
-        }, 2000); // Artificial 2s delay for cinematic effect
-    });
+        return `
+            <div class="w-[300px] bg-card border border-white/10 p-6 rounded-xl flex-shrink-0">
+                <div class="flex gap-1 text-xs mb-3">${starsHtml}</div>
+                <p class="text-gray-300 text-sm mb-4 leading-relaxed">"${r.text}"</p>
+                <div class="flex items-center gap-3 border-t border-white/5 pt-3">
+                    <div class="w-8 h-8 rounded-full bg-brand/20 text-brand flex items-center justify-center font-bold text-xs">
+                        ${r.name.charAt(0)}
+                    </div>
+                    <div class="text-xs font-bold text-white">${r.name}</div>
+                </div>
+            </div>
+        `;
+    }).join('');
 
-    // === 3. GITHUB FETCHING LOGIC (THE CORE REQUEST) ===
+    // === 2. GITHUB PORTFOLIO LOADER (With Text Parsing) ===
     const container = document.getElementById('project-container');
 
     async function loadProjects() {
@@ -43,75 +56,61 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) throw new Error('GitHub API Limit or Error');
             const files = await response.json();
 
-            // Filter only image files
+            container.innerHTML = '';
             const imageFiles = files.filter(file => file.name.match(/\.(jpg|jpeg|png|gif|webp)$/i));
 
-            // Clear container
-            container.innerHTML = '';
+            if (imageFiles.length === 0) {
+                container.innerHTML = '<div class="text-gray-500">No projects found. Upload images to /projects folder.</div>';
+                return;
+            }
 
-            // Process files
             for (const imgFile of imageFiles) {
-                // 1. Identify the matching .txt file name
-                const baseName = imgFile.name.substring(0, imgFile.name.lastIndexOf('.'));
+                const baseName = imgFile.name.split('.').slice(0, -1).join('.');
                 const txtFileName = baseName + '.txt';
-                
-                // 2. Find if that txt file exists in the file list
                 const txtFileObj = files.find(f => f.name === txtFileName);
 
-                let title = baseName.replace(/-/g, ' '); // Fallback Title
-                let desc = "High-quality label design project."; // Fallback Desc
+                let title = baseName.replace(/-/g, ' ');
+                let desc = "Professional packaging design.";
 
-                // 3. If .txt exists, fetch its content
+                // Fetch Description if exists
                 if (txtFileObj) {
                     try {
                         const txtRes = await fetch(txtFileObj.download_url);
                         const txtContent = await txtRes.text();
-                        
-                        // 4. PARSE LOGIC: First line = Title, Rest = Description
-                        const lines = txtContent.split('\n');
+                        const lines = txtContent.split('\n').filter(l => l.trim() !== '');
                         if (lines.length > 0) {
-                            // Remove empty lines at start/end
-                            const cleanLines = lines.filter(line => line.trim() !== "");
-                            if (cleanLines.length > 0) {
-                                title = cleanLines[0];
-                                desc = cleanLines.slice(1).join('<br>'); // Join rest with line breaks
-                            }
+                            title = lines[0]; // First line is title
+                            desc = lines.slice(1).join('<br>'); // Rest is desc
                         }
-                    } catch (err) {
-                        console.warn(`Could not load text for ${baseName}`);
-                    }
+                    } catch (e) { console.log("No text file found"); }
                 }
 
-                // 5. Create the Card HTML
                 const card = document.createElement('div');
-                card.className = 'masonry-item group relative rounded-none overflow-hidden bg-[#111] cursor-none reveal-element';
+                card.className = 'masonry-item group relative rounded-xl overflow-hidden bg-card border border-white/10 cursor-pointer reveal';
                 
                 card.innerHTML = `
                     <div class="relative overflow-hidden">
-                        <img src="${imgFile.download_url}" alt="${title}" class="w-full h-auto block transition duration-[1.5s] ease-out group-hover:scale-110 grayscale group-hover:grayscale-0">
-                        <div class="absolute inset-0 bg-black/40 group-hover:opacity-0 transition-opacity duration-500"></div>
-                    </div>
-                    <div class="p-5 border-x border-b border-white/10 bg-[#0a0a0a] relative z-10">
-                        <span class="text-accent text-[10px] font-bold uppercase tracking-widest mb-2 block">Packaging</span>
-                        <h3 class="text-xl text-white font-heading font-bold group-hover:text-accent transition-colors">${title}</h3>
+                        <img src="${imgFile.download_url}" alt="${title}" class="w-full h-auto block transition duration-700 group-hover:scale-110 group-hover:opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <div>
+                                <span class="text-brand text-[10px] font-bold uppercase tracking-widest">Label Design</span>
+                                <h3 class="text-white font-bold text-lg capitalize">${title}</h3>
+                            </div>
+                        </div>
                     </div>
                 `;
-
-                // Add Click Event
-                card.addEventListener('click', () => openModal(imgFile.download_url, title, desc));
                 
+                card.addEventListener('click', () => openModal(imgFile.download_url, title, desc));
                 container.appendChild(card);
             }
-
             initScrollReveal();
-
         } catch (error) {
             console.error(error);
-            container.innerHTML = '<div class="text-gray-500 p-10">Github API limit reached or folder empty.</div>';
+            container.innerHTML = '<div class="p-4 text-red-400 border border-red-900 bg-red-900/10 rounded">Error loading Github data. Check console.</div>';
         }
     }
 
-    // === 4. MODAL SYSTEM ===
+    // === 3. MODAL LOGIC ===
     const modal = document.getElementById('image-modal');
     const modalImg = document.getElementById('modal-img');
     const modalTitle = document.getElementById('modal-title');
@@ -120,9 +119,9 @@ document.addEventListener('DOMContentLoaded', () => {
     window.openModal = (src, title, desc) => {
         modalImg.src = src;
         modalTitle.innerText = title;
-        modalDesc.innerHTML = desc; // Use innerHTML to support <br> from text file
+        modalDesc.innerHTML = desc;
         modal.classList.remove('hidden');
-        requestAnimationFrame(() => modal.classList.remove('opacity-0'));
+        setTimeout(() => modal.classList.remove('opacity-0'), 10);
         document.body.style.overflow = 'hidden';
     };
 
@@ -131,41 +130,30 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             modal.classList.add('hidden');
             modalImg.src = '';
-        }, 500);
+        }, 300);
         document.body.style.overflow = 'auto';
     };
 
-    // === 5. UTILS ===
+    // === 4. SCROLL REVEAL & FAQ ===
     function initScrollReveal() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.classList.add('active');
                 }
             });
         }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal-element').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     }
 
-    // === 6. REVIEWS RENDER ===
-    const reviewsTrack = document.getElementById('reviews-track');
-    const reviews = [
-        {text: "Best designer I've worked with on Fiverr.", author: "James K."},
-        {text: "The compliance knowledge saved us from a lawsuit.", author: "EliteSupps"},
-        {text: "Clean, modern, and sells product.", author: "Sarah J."},
-        {text: "Understood the assignment immediately.", author: "VapeCo"},
-    ];
-    
-    // Duplicate for infinite scroll
-    const fullReviews = [...reviews, ...reviews, ...reviews];
-    
-    reviewsTrack.innerHTML = fullReviews.map(r => `
-        <div class="flex items-center gap-4 px-8 py-4 border border-white/10 rounded-full bg-white/5 mx-4 flex-shrink-0">
-            <div class="text-accent"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-            <p class="text-sm text-gray-300 font-light">"${r.text}" <span class="text-white font-bold ml-2">— ${r.author}</span></p>
-        </div>
-    `).join('');
+    window.toggleFaq = (element) => {
+        const isActive = element.classList.contains('active');
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+        // Toggle clicked
+        if (!isActive) element.classList.add('active');
+    };
 
-    // Start
+    // Run
     loadProjects();
 });
