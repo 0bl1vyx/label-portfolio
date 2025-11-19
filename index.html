@@ -3,86 +3,284 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Priyo D | Label Design Specialist</title>
+    <title>Priyo D. | Specialist Label & Packaging Design</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Space Grotesk', 'sans-serif'] },
-                    colors: { accent: '#8b5cf6', bgMain: '#050505' }
+                    fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Outfit', 'sans-serif'] },
+                    colors: { brand: '#7c3aed', dark: '#050505', card: '#0f0f0f' }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-bgMain text-gray-200 selection:bg-accent selection:text-white">
-
-    <div class="custom-cursor"></div>
-    <div id="preloader"><div class="loader-bar"></div></div>
+<body class="bg-dark text-gray-300 font-sans antialiased">
     <div class="noise-overlay"></div>
 
-    <nav class="fixed w-full z-40 top-0 py-6 px-8 flex justify-between items-center mix-blend-difference text-white">
-        <div class="text-2xl font-heading font-bold tracking-tighter uppercase hover-trigger">PRIYO <span class="text-accent">D.</span></div>
-        <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="hover-trigger border border-white/20 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">Hire Me</a>
+    <nav class="fixed w-full z-50 top-0 bg-dark/90 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="font-heading font-bold text-xl text-white tracking-tight">PRIYO <span class="text-brand">D.</span></div>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+                <a href="#portfolio" class="hover:text-white transition">Work</a>
+                <a href="#process" class="hover:text-white transition">Process</a>
+                <a href="#faq" class="hover:text-white transition">FAQ</a>
+            </div>
+            <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="bg-white text-black hover:bg-brand hover:text-white px-5 py-2 rounded-full text-sm font-bold transition-colors">
+                Hire Me
+            </a>
+        </div>
     </nav>
 
-    <header class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(139,92,246,0.15)_0%,_rgba(0,0,0,0)_70%)]"></div>
+    <header class="pt-32 pb-20 px-6 relative overflow-hidden text-center">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-brand/10 rounded-full blur-[120px] pointer-events-none"></div>
         
-        <span class="text-accent text-xs font-bold tracking-[0.3em] uppercase mb-6 reveal-element">Graphic Specialist</span>
-        <h1 class="font-heading text-6xl md:text-9xl font-bold mb-8 text-white leading-[0.9] reveal-element delay-100">
-            Visual <br> <span class="glitch-text" data-text="Alchemy">Alchemy</span>
-        </h1>
-        <p class="text-gray-400 max-w-xl text-lg mb-12 reveal-element delay-200 font-light">
-            Packaging that doesn't just sit on the shelf—it <span class="text-white font-medium">screams</span> to be picked up.
-        </p>
-        <div class="flex gap-6 reveal-element delay-300">
-            <a href="#portfolio" class="hover-trigger bg-white text-black px-8 py-4 rounded-full font-bold text-sm uppercase tracking-wide hover:scale-105 transition-transform">View Works</a>
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-bold uppercase tracking-widest text-brand mb-6 reveal">
+                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Available for Commissions
+            </div>
+            
+            <h1 class="font-heading text-5xl md:text-7xl font-black text-white mb-6 leading-tight reveal delay-100">
+                Labels That <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand to-blue-500">Sell Product.</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto reveal delay-200">
+                I specialize in <strong>FDA-compliant</strong> labels for Supplements, Cosmetics, and Food. Stop blending in—get packaging that dominates the shelf.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4 reveal delay-300">
+                <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="bg-brand hover:bg-violet-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition shadow-lg shadow-brand/20">
+                    Start Project <i class="fa-solid fa-arrow-right ml-2"></i>
+                </a>
+                <a href="#portfolio" class="border border-white/10 hover:border-white/30 bg-white/5 text-white px-8 py-4 rounded-lg font-bold text-lg transition">
+                    View Gallery
+                </a>
+            </div>
         </div>
     </header>
 
-    <section id="portfolio" class="py-32 px-6 md:px-12 border-t border-white/5 bg-[#080808]">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex justify-between items-end mb-20">
-                <h2 class="font-heading text-5xl text-white font-bold reveal-element">Selected Cases</h2>
-                <span class="text-gray-600 text-sm reveal-element">Latest uploads from GitHub</span>
+    <section class="border-y border-white/5 bg-card py-8">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="reveal">
+                <div class="text-3xl font-heading font-bold text-white mb-1">100+</div>
+                <div class="text-xs uppercase tracking-widest text-gray-500">Projects Done</div>
             </div>
-            
-            <div id="project-container" class="masonry-grid min-h-[50vh]"></div>
+            <div class="reveal delay-100">
+                <div class="text-3xl font-heading font-bold text-white mb-1">2 Years</div>
+                <div class="text-xs uppercase tracking-widest text-gray-500">Experience</div>
+            </div>
+            <div class="reveal delay-200">
+                <div class="text-3xl font-heading font-bold text-white mb-1">4.9/5</div>
+                <div class="text-xs uppercase tracking-widest text-gray-500">Client Rating</div>
+            </div>
+            <div class="reveal delay-300">
+                <div class="text-3xl font-heading font-bold text-white mb-1">100%</div>
+                <div class="text-xs uppercase tracking-widest text-gray-500">Print Success</div>
+            </div>
         </div>
     </section>
 
-    <footer class="border-t border-white/5 bg-black py-20 overflow-hidden">
-        <div class="marquee-wrapper mb-20">
-            <div class="marquee-track" id="reviews-track"></div>
+    <section id="portfolio" class="py-24 bg-dark">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <span class="text-brand font-bold tracking-widest text-xs uppercase mb-2 block">Selected Works</span>
+                    <h2 class="font-heading text-4xl font-bold text-white">Recent Labels & Stickers</h2>
+                </div>
+                <p class="text-sm text-gray-500 mt-4 md:mt-0"><i class="fa-brands fa-github mr-2"></i>Fetched live from GitHub</p>
+            </div>
+            
+            <div id="project-container" class="masonry-grid min-h-[400px]">
+                </div>
         </div>
-        <div class="text-center">
-            <a href="mailto:prystudio@proton.me" class="font-heading text-4xl md:text-6xl font-bold text-white hover:text-accent transition-colors hover-trigger">Let's Create.</a>
-            <p class="text-gray-600 mt-8 text-sm">&copy; 2025 Priyo D. All rights reserved.</p>
+    </section>
+
+    <section class="py-20 border-y border-white/5 bg-card">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row gap-16 items-center">
+            <div class="w-full md:w-1/2 reveal">
+                <span class="text-green-500 font-bold tracking-widest text-xs uppercase mb-2 block">Technical Expertise</span>
+                <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-6">I Speak "Print Shop" & "FDA"</h2>
+                <p class="text-gray-400 mb-6 leading-relaxed">
+                    Most designers just make things look pretty. I ensure your product is <strong>legal</strong> and <strong>printable</strong>. I understand the difference between Flexo and Digital printing, Spot UV layers, and Die-cut lines.
+                </p>
+                <ul class="space-y-4">
+                    <li class="flex items-center gap-3 text-sm text-gray-300">
+                        <i class="fa-solid fa-check-circle text-brand"></i> FDA/EU Compliant Nutrition Panels
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-gray-300">
+                        <i class="fa-solid fa-check-circle text-brand"></i> CMYK Color Mode & 300 DPI
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-gray-300">
+                        <i class="fa-solid fa-check-circle text-brand"></i> Barcode & QR Code Generation
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-gray-300">
+                        <i class="fa-solid fa-check-circle text-brand"></i> Vector Outlining for Perfect Print
+                    </li>
+                </ul>
+            </div>
+            <div class="w-full md:w-1/2 grid grid-cols-2 gap-4 reveal delay-200">
+                <div class="bg-dark p-6 rounded-xl border border-white/10 text-center hover:border-brand transition">
+                    <i class="fa-solid fa-file-pdf text-3xl text-red-500 mb-3"></i>
+                    <h3 class="font-bold text-white">Print Ready PDF</h3>
+                </div>
+                <div class="bg-dark p-6 rounded-xl border border-white/10 text-center hover:border-brand transition">
+                    <i class="fa-solid fa-pen-nib text-3xl text-orange-500 mb-3"></i>
+                    <h3 class="font-bold text-white">Source (.Ai)</h3>
+                </div>
+                <div class="bg-dark p-6 rounded-xl border border-white/10 text-center hover:border-brand transition">
+                    <i class="fa-solid fa-cube text-3xl text-blue-500 mb-3"></i>
+                    <h3 class="font-bold text-white">3D Mockup</h3>
+                </div>
+                <div class="bg-dark p-6 rounded-xl border border-white/10 text-center hover:border-brand transition">
+                    <i class="fa-solid fa-ruler-combined text-3xl text-green-500 mb-3"></i>
+                    <h3 class="font-bold text-white">Die Lines</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="py-20 bg-dark">
+        <div class="max-w-4xl mx-auto px-6 text-center mb-12">
+            <h2 class="font-heading text-3xl font-bold text-white mb-4">Simple 4-Step Process</h2>
+            <p class="text-gray-400">No headaches. Just professional workflow.</p>
+        </div>
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="relative p-6 rounded-xl bg-card border border-white/5 reveal">
+                <div class="text-5xl font-heading font-bold text-white/5 absolute top-4 right-4">01</div>
+                <h3 class="text-xl font-bold text-white mb-2">Details</h3>
+                <p class="text-sm text-gray-400">You send logo, dimensions, and text info.</p>
+            </div>
+            <div class="relative p-6 rounded-xl bg-card border border-white/5 reveal delay-100">
+                <div class="text-5xl font-heading font-bold text-white/5 absolute top-4 right-4">02</div>
+                <h3 class="text-xl font-bold text-white mb-2">Draft</h3>
+                <p class="text-sm text-gray-400">I design the initial concept for your review.</p>
+            </div>
+            <div class="relative p-6 rounded-xl bg-card border border-white/5 reveal delay-200">
+                <div class="text-5xl font-heading font-bold text-white/5 absolute top-4 right-4">03</div>
+                <h3 class="text-xl font-bold text-white mb-2">Polish</h3>
+                <p class="text-sm text-gray-400">We tweak colors/fonts until you are 100% happy.</p>
+            </div>
+            <div class="relative p-6 rounded-xl bg-card border border-green-500/20 reveal delay-300">
+                <div class="text-5xl font-heading font-bold text-green-500/10 absolute top-4 right-4">04</div>
+                <h3 class="text-xl font-bold text-white mb-2">Delivery</h3>
+                <p class="text-sm text-gray-400">You get all source files ready for the printer.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 border-y border-white/5 bg-card">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <div class="w-24 h-24 bg-gray-800 rounded-full mx-auto mb-6 overflow-hidden border-2 border-white/10">
+                <img src="https://ui-avatars.com/api/?name=Priyo+D&background=7c3aed&color=fff" alt="Priyo D" class="w-full h-full object-cover">
+            </div>
+            <h2 class="font-heading text-3xl font-bold text-white mb-4">Hi, I'm Priyo.</h2>
+            <p class="text-gray-400 leading-relaxed mb-8">
+                I'm a Bug Hunter turned <strong>Label Design Specialist</strong>. This unique background means I pay extreme attention to detail. While others miss typos or pixel misalignments, I catch them. I treat every label like a piece of art that needs to function as a sales tool.
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="social-pill"><i class="fa-solid fa-circle-check text-green-500"></i> Fiverr</a>
+                <a href="https://contra.com" target="_blank" class="social-pill"><i class="fa-solid fa-bolt text-yellow-500"></i> Contra</a>
+                <a href="https://freelancer.com" target="_blank" class="social-pill"><i class="fa-solid fa-dove text-blue-400"></i> Freelancer</a>
+                <a href="https://linkedin.com" target="_blank" class="social-pill"><i class="fa-brands fa-linkedin text-blue-600"></i> LinkedIn</a>
+                <a href="https://instagram.com" target="_blank" class="social-pill"><i class="fa-brands fa-instagram text-pink-500"></i> Instagram</a>
+                <a href="https://x.com" target="_blank" class="social-pill"><i class="fa-brands fa-x-twitter text-white"></i> X / Twitter</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-dark overflow-hidden">
+        <div class="text-center mb-10">
+            <h2 class="font-heading text-3xl font-bold text-white">Real Client Feedback</h2>
+        </div>
+        <div class="marquee-wrap">
+            <div class="marquee-content" id="reviews-track">
+                </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-20 bg-card border-t border-white/5">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="font-heading text-3xl font-bold text-white mb-10 text-center">Frequently Asked Questions</h2>
+            
+            <div class="space-y-4">
+                <div class="faq-item group cursor-pointer" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center py-4">
+                        <h3 class="font-bold text-white">What information do you need to start?</h3>
+                        <i class="fa-solid fa-chevron-down text-gray-500 transition-transform"></i>
+                    </div>
+                    <div class="faq-answer text-gray-400 text-sm">
+                        <p class="pb-4">I need your logo (vector preferred), the exact bottle/sticker dimensions, all text (ingredients, name, description), and any barcode requirements.</p>
+                    </div>
+                </div>
+                <div class="faq-item group cursor-pointer" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center py-4">
+                        <h3 class="font-bold text-white">Do you provide the 3D mockup?</h3>
+                        <i class="fa-solid fa-chevron-down text-gray-500 transition-transform"></i>
+                    </div>
+                    <div class="faq-answer text-gray-400 text-sm">
+                        <p class="pb-4">Yes! Every package comes with a high-quality 3D realistic mockup that you can use for Amazon listings or Facebook ads.</p>
+                    </div>
+                </div>
+                <div class="faq-item group cursor-pointer" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center py-4">
+                        <h3 class="font-bold text-white">Can I print these files at any print shop?</h3>
+                        <i class="fa-solid fa-chevron-down text-gray-500 transition-transform"></i>
+                    </div>
+                    <div class="faq-answer text-gray-400 text-sm">
+                        <p class="pb-4">Absolutely. I deliver industry-standard CMYK PDF and AI files with proper bleed and safety margins. They work with Vistaprint, StickerMule, or local printers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-12 border-t border-white/10 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="font-heading text-3xl font-bold text-white mb-6">Ready to stand out?</h2>
+            <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="inline-block bg-brand hover:bg-white hover:text-black text-white px-10 py-4 rounded-full font-bold text-lg transition-all mb-8">
+                Order Now on Fiverr
+            </a>
+            <div class="text-gray-600 text-sm">
+                &copy; 2025 Priyo D. | All Rights Reserved. <br>
+                <span class="text-xs opacity-50">Images property of their respective owners.</span>
+            </div>
         </div>
     </footer>
 
-    <div id="image-modal" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl hidden opacity-0 transition-all duration-500 flex items-center justify-center p-4" onclick="closeModal()">
-        <button onclick="closeModal()" class="absolute top-8 right-8 text-white hover:text-accent text-4xl z-[110] hover-trigger">&times;</button>
-        <div class="relative max-w-7xl w-full h-[85vh] flex flex-col md:flex-row gap-12" onclick="event.stopPropagation()">
-            <div class="w-full md:w-2/3 h-full flex items-center justify-center bg-[#0a0a0a] rounded-lg p-4 border border-white/10">
-                <img id="modal-img" src="" class="max-h-full max-w-full object-contain shadow-2xl">
+    <div id="image-modal" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl hidden opacity-0 transition-all duration-300 flex items-center justify-center p-4" onclick="closeModal()">
+        <button onclick="closeModal()" class="absolute top-6 right-6 text-white hover:text-brand text-3xl z-[110]">&times;</button>
+        <div class="relative max-w-7xl w-full max-h-[90vh] flex flex-col md:flex-row gap-8" onclick="event.stopPropagation()">
+            <div class="w-full md:w-2/3 flex items-center justify-center bg-[#0a0a0a] rounded-xl p-4 border border-white/10">
+                <img id="modal-img" src="" class="max-h-[80vh] max-w-full object-contain shadow-2xl">
             </div>
             <div class="w-full md:w-1/3 flex flex-col justify-center">
-                <div class="h-1 w-12 bg-accent mb-8"></div>
-                <h3 id="modal-title" class="font-heading text-4xl text-white mb-6 leading-tight"></h3>
-                <p id="modal-desc" class="text-gray-400 text-sm leading-relaxed mb-10 font-light"></p>
-                <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="hover-trigger w-full py-4 border border-white/20 text-white text-center rounded-lg uppercase text-xs font-bold tracking-widest hover:bg-white hover:text-black transition-all">
-                    Order Project
+                <span class="text-brand text-xs font-bold uppercase tracking-widest mb-2 block">Project Details</span>
+                <h3 id="modal-title" class="font-heading text-2xl text-white mb-4 leading-tight capitalize"></h3>
+                <div class="h-0.5 w-10 bg-white/10 mb-6"></div>
+                <p id="modal-desc" class="text-gray-400 text-sm leading-relaxed mb-8"></p>
+                <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="w-full py-4 bg-white text-black rounded-lg font-bold text-center hover:bg-brand hover:text-white transition-all">
+                    I Want a Label Like This
                 </a>
             </div>
         </div>
     </div>
 
     <script src="script.js"></script>
+
+    <style>
+        .social-pill {
+            display: flex; align-items: center; gap: 8px;
+            padding: 8px 16px; background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 999px; font-size: 13px; font-weight: 600; color: #ccc;
+            transition: all 0.2s;
+        }
+        .social-pill:hover { background: rgba(255,255,255,0.1); color: white; transform: translateY(-2px); }
+    </style>
 </body>
 </html>
