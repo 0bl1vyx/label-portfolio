@@ -3,45 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Priyo D | Premium Label Designer</title>
+    <title>Priyo D | Premium Packaging Designer</title>
+    <meta name="description" content="Professional label design portfolio by Priyo D.">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- LINK UPDATED: Pointing to root style.css -->
     <link rel="stylesheet" href="style.css">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- FONTS: Outfit (Headings) + Inter (Readability) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    fontFamily: { 
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
                     colors: {
-                        'brand-black': '#050505',
-                        'brand-purple': '#8b5cf6',
-                        'brand-green': '#1DBF73',
+                        'bg-main': '#050505',
+                        'bg-card': '#0f0f0f',
+                        'accent': '#7c3aed', /* Violet */
+                        'accent-blue': '#3b82f6', /* Blue */
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
                     },
                     keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        }
+                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } }
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-brand-black text-white overflow-x-hidden selection:bg-brand-purple selection:text-white">
+<body class="bg-bg-main text-gray-200 overflow-x-hidden selection:bg-accent selection:text-white">
 
     <!-- Navbar -->
-    <nav id="navbar" class="fixed w-full z-50 top-0 transition-all duration-300 border-b border-white/5 bg-black/50 backdrop-blur-xl">
+    <nav id="navbar" class="fixed w-full z-50 top-0 transition-all duration-300 border-b border-white/5 bg-bg-main/80 backdrop-blur-xl">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold tracking-tight">PRIYO<span class="text-brand-purple">.</span>D</div>
-            <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="bg-brand-green hover:bg-green-500 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(29,191,115,0.4)] hover:shadow-[0_0_30px_rgba(29,191,115,0.6)] hover:scale-105">
+            <!-- NAME UPDATED -->
+            <div class="text-2xl font-heading font-bold tracking-tight text-white">PRIYO <span class="text-accent">D.</span></div>
+            
+            <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="bg-white text-black hover:bg-accent hover:text-white transition-colors px-6 py-2 rounded-full text-sm font-bold flex items-center gap-2">
                 <i class="fa-solid fa-circle-check"></i> Hire Me
             </a>
         </div>
@@ -50,140 +55,161 @@
     <!-- Hero Section -->
     <header class="min-h-screen flex flex-col justify-center items-center text-center px-4 pt-20 relative overflow-hidden">
         
-        <!-- Background Blobs -->
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[120px] animate-blob"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] animate-blob animation-delay-2000"></div>
-
-        <!-- Floating Badges -->
-        <div class="hidden md:block absolute top-32 left-10 lg:left-32 animate-float">
-            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="w-16 h-16 opacity-80 drop-shadow-[0_0_15px_rgba(139,92,246,0.5)]" alt="3D Icon">
-        </div>
-        <div class="hidden md:block absolute bottom-32 right-10 lg:right-32 animate-float animation-delay-2000">
-            <img src="https://cdn-icons-png.flaticon.com/512/2921/2921226.png" class="w-16 h-16 opacity-80 drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]" alt="Box Icon">
-        </div>
+        <!-- Subtle Glows (Not distracting) -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[100px] pointer-events-none"></div>
 
         <!-- Stats -->
-        <div class="flex flex-wrap justify-center gap-4 mb-8 reveal-element">
-            <div class="stat-badge"><i class="fa-solid fa-star text-yellow-400"></i> 4.9/5 Rating</div>
-            <div class="stat-badge"><i class="fa-solid fa-users text-blue-400"></i> 100+ Happy Clients</div>
-            <div class="stat-badge"><i class="fa-solid fa-award text-purple-400"></i> 2+ Years Exp.</div>
+        <div class="flex flex-wrap justify-center gap-3 mb-8 reveal-element">
+            <div class="glass-badge"><i class="fa-solid fa-star text-yellow-400"></i> 4.9 Rating</div>
+            <div class="glass-badge"><i class="fa-solid fa-check-circle text-blue-400"></i> 100+ Projects</div>
+            <div class="glass-badge"><i class="fa-solid fa-bolt text-accent"></i> Fast Delivery</div>
         </div>
 
-        <h1 class="text-6xl md:text-8xl font-bold mb-6 leading-tight reveal-element delay-100">
-            Stand out on <br> 
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-purple via-pink-500 to-blue-500">Every Shelf.</span>
+        <h1 class="font-heading text-5xl md:text-7xl font-bold mb-6 leading-tight text-white reveal-element delay-100">
+            Packaging that <br> 
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-blue">Sells Itself.</span>
         </h1>
         
-        <p class="text-gray-300 text-lg md:text-xl max-w-2xl mb-10 reveal-element delay-200">
-            Premium, print-ready packaging design for supplements, cosmetics, and food brands. I turn your product into a bestseller.
+        <p class="text-gray-400 text-lg max-w-2xl mb-10 reveal-element delay-200 font-light leading-relaxed">
+            I design premium, compliant, and shelf-ready packaging for supplements, cosmetics, and food brands.
         </p>
         
         <div class="flex flex-col sm:flex-row gap-4 reveal-element delay-300 z-10">
-            <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="bg-white text-black px-10 py-4 rounded-xl font-bold hover:bg-gray-100 transition hover:scale-105 shadow-[0_0_40px_rgba(255,255,255,0.3)] flex items-center justify-center gap-2">
+            <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="bg-accent hover:bg-accent-blue text-white px-8 py-3 rounded-lg font-bold transition-all shadow-lg shadow-accent/20 flex items-center justify-center gap-2">
                 Order on Fiverr <i class="fa-solid fa-arrow-right"></i>
             </a>
-            <a href="#portfolio" class="backdrop-blur-md bg-white/10 border border-white/20 px-10 py-4 rounded-xl font-bold hover:bg-white/20 transition flex items-center justify-center gap-2">
-                See My Work
+            <a href="#portfolio" class="border border-white/10 hover:border-white/30 bg-white/5 text-white px-8 py-3 rounded-lg font-bold transition-all flex items-center justify-center gap-2">
+                View Gallery
             </a>
+        </div>
+        
+        <!-- Tools -->
+        <div class="mt-16 flex gap-6 opacity-30 grayscale hover:grayscale-0 transition duration-500">
+            <i class="fa-solid fa-pen-nib text-2xl" title="Illustrator"></i>
+            <i class="fa-solid fa-image text-2xl" title="Photoshop"></i>
+            <i class="fa-solid fa-cube text-2xl" title="Blender"></i>
         </div>
     </header>
 
-    <!-- Services Strip -->
-    <div class="border-y border-white/10 bg-white/5 py-6 overflow-hidden">
-        <div class="flex justify-center flex-wrap gap-4 md:gap-12 text-gray-400 font-bold uppercase tracking-widest text-sm">
-            <span><i class="fa-solid fa-check text-brand-purple mr-2"></i>Label Design</span>
-            <span><i class="fa-solid fa-check text-brand-purple mr-2"></i>Box Packaging</span>
-            <span><i class="fa-solid fa-check text-brand-purple mr-2"></i>3D Mockups</span>
-            <span><i class="fa-solid fa-check text-brand-purple mr-2"></i>Print Ready Files</span>
-            <span><i class="fa-solid fa-check text-brand-purple mr-2"></i>Dielines</span>
-        </div>
-    </div>
-
-    <!-- Reviews Section -->
-    <section class="py-20 bg-black overflow-hidden">
-        <div class="text-center mb-10">
-            <h2 class="text-3xl font-bold mb-2">What Clients Say</h2>
-            <p class="text-gray-400">100+ 5-Star Reviews on Fiverr</p>
-        </div>
-        
-        <!-- Infinite Marquee Wrapper -->
-        <div class="marquee-wrapper">
-            <div class="marquee-track" id="reviews-track">
-                <!-- JS will inject reviews here TWICE for infinite loop -->
+    <!-- Services / Process -->
+    <section class="py-24 border-t border-white/5 bg-bg-card relative">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-4">Why Brands Choose Me</h2>
+                <p class="text-gray-400">It's not just art. It's strategic design.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="p-8 rounded-2xl bg-bg-main border border-white/5 hover:border-accent/50 transition group">
+                    <div class="w-12 h-12 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-xl mb-6 group-hover:bg-accent group-hover:text-white transition">
+                        <i class="fa-solid fa-ruler-combined"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-white mb-3">Print Ready & Compliant</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">I ensure all fonts are readable, bleed lines are correct, and layouts meet FDA/EU standards.</p>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="p-8 rounded-2xl bg-bg-main border border-white/5 hover:border-accent-blue/50 transition group">
+                    <div class="w-12 h-12 rounded-lg bg-accent-blue/10 text-accent-blue flex items-center justify-center text-xl mb-6 group-hover:bg-accent-blue group-hover:text-white transition">
+                        <i class="fa-solid fa-cube"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-white mb-3">3D Realistic Mockups</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">Visualize your product before printing. I provide high-end 3D renders for your marketing.</p>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="p-8 rounded-2xl bg-bg-main border border-white/5 hover:border-green-500/50 transition group">
+                    <div class="w-12 h-12 rounded-lg bg-green-500/10 text-green-500 flex items-center justify-center text-xl mb-6 group-hover:bg-green-500 group-hover:text-white transition">
+                        <i class="fa-solid fa-infinity"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-white mb-3">Unlimited Revisions</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">We keep tweaking the design until you are 100% happy with the result.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="max-w-7xl mx-auto px-4 py-24 relative">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+    <section id="portfolio" class="max-w-7xl mx-auto px-4 py-32">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
-                <span class="text-brand-purple font-bold tracking-wider text-sm uppercase mb-2 block">My Portfolio</span>
-                <h2 class="text-4xl md:text-5xl font-bold">Recent Projects</h2>
+                <span class="text-accent font-bold tracking-widest text-xs uppercase mb-2 block">Selected Works</span>
+                <h2 class="font-heading text-4xl md:text-5xl font-bold text-white">Recent Projects</h2>
             </div>
-            <a href="https://github.com/0bl1vyx/label-portfolio/tree/main/projects" target="_blank" class="flex items-center gap-2 text-gray-400 hover:text-white transition border border-white/10 px-4 py-2 rounded-lg bg-white/5 text-sm">
-                <i class="fa-brands fa-github"></i> View Source
+            <a href="https://github.com/0bl1vyx/label-portfolio/tree/main/projects" target="_blank" class="text-sm text-gray-500 hover:text-white transition flex items-center gap-2">
+                <i class="fa-brands fa-github"></i> Source Folder
             </a>
         </div>
 
         <div id="project-container" class="masonry-grid min-h-[300px]">
-            <div class="text-center py-20 text-gray-500">
-                <i class="fa-solid fa-circle-notch fa-spin text-2xl mb-3 text-brand-purple"></i><br>
-                Fetching designs from 0bl1vyx's GitHub...
-            </div>
+            <!-- JS injects content here -->
         </div>
     </section>
 
-    <!-- New Big Footer -->
-    <footer class="bg-[#0a0a0a] border-t border-white/10 pt-20 pb-10">
-        <div class="max-w-5xl mx-auto px-4">
+    <!-- Reviews Section -->
+    <section class="py-24 bg-bg-card border-y border-white/5 overflow-hidden">
+        <div class="text-center mb-12 px-4">
+            <h2 class="font-heading text-3xl text-white mb-4">Client Feedback</h2>
+            <p class="text-gray-400">Honest reviews from real projects.</p>
+        </div>
+        <div class="marquee-wrapper">
+            <div class="marquee-track" id="reviews-track"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-bg-main pt-24 pb-10 border-t border-white/10">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="font-heading text-4xl md:text-6xl font-bold text-white mb-6">Ready to launch?</h2>
+            <p class="text-gray-400 text-lg mb-10">Let's build your brand identity together.</p>
             
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-6xl font-bold mb-6">Ready to start?</h2>
-                <p class="text-xl text-gray-400 mb-10">Choose a platform to connect.</p>
-                
-                <!-- Big Social Cards -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
-                    
-                    <!-- Fiverr (Main) -->
-                    <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="group relative p-6 rounded-2xl bg-gradient-to-br from-green-900/50 to-black border border-green-500/30 hover:border-green-500/80 transition-all hover:-translate-y-1 overflow-hidden">
-                        <div class="absolute inset-0 bg-green-500/10 opacity-0 group-hover:opacity-100 transition"></div>
-                        <i class="fa-solid fa-circle-check text-4xl text-brand-green mb-4"></i>
-                        <h3 class="text-xl font-bold text-white mb-1">Order on Fiverr</h3>
-                        <p class="text-gray-400 text-sm group-hover:text-white transition">Secure payment & reviews</p>
-                    </a>
-
-                    <!-- Email -->
-                    <a href="mailto:prystudio@proton.me" class="group p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-brand-purple/50 hover:bg-brand-purple/10 transition-all hover:-translate-y-1">
-                        <i class="fa-solid fa-envelope text-4xl text-brand-purple mb-4"></i>
-                        <h3 class="text-xl font-bold text-white mb-1">Email Me</h3>
-                        <p class="text-gray-400 text-sm">prystudio@proton.me</p>
-                    </a>
-
-                    <!-- Twitter/X -->
-                    <a href="https://twitter.com/testuser" target="_blank" class="group p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-white/50 hover:bg-white/10 transition-all hover:-translate-y-1">
-                        <i class="fa-brands fa-x-twitter text-4xl text-white mb-4"></i>
-                        <h3 class="text-xl font-bold text-white mb-1">Twitter / X</h3>
-                        <p class="text-gray-400 text-sm">Follow my journey</p>
-                    </a>
-                </div>
-
-                <!-- Secondary Links -->
-                <div class="flex justify-center gap-6 mt-10 opacity-60 hover:opacity-100 transition duration-300">
-                    <a href="#" class="hover:text-brand-purple"><i class="fa-brands fa-instagram text-xl"></i></a>
-                    <a href="#" class="hover:text-brand-purple"><i class="fa-brands fa-linkedin text-xl"></i></a>
-                    <a href="#" class="hover:text-brand-purple"><i class="fa-solid fa-bolt text-xl"></i> (Contra)</a>
-                </div>
+            <div class="flex flex-wrap justify-center gap-4 mb-16">
+                <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="bg-[#1DBF73] hover:bg-green-600 text-white px-8 py-3 rounded-lg font-bold flex items-center gap-2 transition hover:-translate-y-1">
+                    <i class="fa-solid fa-circle-check"></i> Order on Fiverr
+                </a>
+                <a href="mailto:prystudio@proton.me" class="bg-white/5 border border-white/10 hover:bg-white/10 text-white px-8 py-3 rounded-lg font-bold flex items-center gap-2 transition hover:-translate-y-1">
+                    <i class="fa-solid fa-envelope"></i> Email Me
+                </a>
             </div>
 
-            <div class="text-center border-t border-white/5 pt-8 text-gray-600 text-sm flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="border-t border-white/5 pt-8 text-sm text-gray-600 flex flex-col md:flex-row justify-between items-center gap-4">
                 <p>&copy; 2025 Priyo D. (0bl1vyx)</p>
-                <p>Made with GitHub & Vercel</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- SCRIPT UPDATED: Pointing to root script.js -->
+    <!-- Modal -->
+    <div id="image-modal" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-md hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4" onclick="closeModal()">
+        <div class="relative max-w-6xl w-full max-h-[90vh] flex flex-col md:flex-row gap-8" onclick="event.stopPropagation()">
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute -top-10 right-0 text-white hover:text-accent text-3xl">&times;</button>
+            
+            <!-- Image -->
+            <div class="w-full md:w-2/3 flex items-center justify-center bg-black/50 rounded-xl p-2">
+                <img id="modal-img" src="" class="max-h-[80vh] max-w-full object-contain rounded-lg shadow-2xl">
+            </div>
+            
+            <!-- Details -->
+            <div class="w-full md:w-1/3 bg-[#111] p-8 rounded-xl border border-white/10 flex flex-col justify-center">
+                <div class="mb-auto">
+                    <span class="text-accent text-xs font-bold tracking-widest uppercase mb-2 block">Project Details</span>
+                    <h3 id="modal-title" class="font-heading text-2xl text-white mb-4 capitalize">Title</h3>
+                    <div class="h-0.5 w-10 bg-white/10 mb-6"></div>
+                    <p id="modal-desc" class="text-gray-400 text-sm leading-relaxed">Description</p>
+                </div>
+                <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="mt-8 w-full text-center bg-white text-black hover:bg-accent hover:text-white py-3 rounded-lg font-bold transition">
+                    Get a Design Like This
+                </a>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
