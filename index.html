@@ -3,174 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Priyo D | Premium Label Design</title>
+    <title>Priyo D | Label Design Specialist</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { 
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Space Grotesk', 'sans-serif'], // Updated for a tech/modern feel
-                    },
-                    colors: {
-                        'bg-main': '#050505',
-                        'bg-card': '#0f0f0f',
-                        'accent': '#8b5cf6', /* Violet */
-                    },
-                    animation: {
-                        'blob': 'blob 7s infinite',
-                    },
-                    keyframes: {
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
-                        }
-                    }
+                    fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Space Grotesk', 'sans-serif'] },
+                    colors: { accent: '#8b5cf6', bgMain: '#050505' }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-bg-main text-gray-200 selection:bg-accent selection:text-white">
+<body class="bg-bgMain text-gray-200 selection:bg-accent selection:text-white">
 
+    <div class="custom-cursor"></div>
+    <div id="preloader"><div class="loader-bar"></div></div>
     <div class="noise-overlay"></div>
 
-    <nav id="navbar" class="fixed w-full z-50 top-0 transition-all duration-300 border-b border-white/0 bg-transparent backdrop-blur-sm">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-xl font-heading font-bold tracking-tight text-white uppercase z-50">
-                PRIYO <span class="text-accent">D.</span>
-            </div>
-            <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 transition-all px-6 py-2 rounded-full text-sm font-bold backdrop-blur-md z-50">
-                Hire Me
-            </a>
-        </div>
+    <nav class="fixed w-full z-40 top-0 py-6 px-8 flex justify-between items-center mix-blend-difference text-white">
+        <div class="text-2xl font-heading font-bold tracking-tighter uppercase hover-trigger">PRIYO <span class="text-accent">D.</span></div>
+        <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="hover-trigger border border-white/20 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">Hire Me</a>
     </nav>
 
-    <header class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative overflow-hidden">
+    <header class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(139,92,246,0.15)_0%,_rgba(0,0,0,0)_70%)]"></div>
         
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-accent/20 rounded-full blur-[120px] animate-blob mix-blend-screen"></div>
-        <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] animate-blob animation-delay-2000 mix-blend-screen"></div>
-
-        <div class="relative z-10 max-w-4xl">
-            <div class="inline-block mb-4 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs font-bold tracking-widest uppercase text-accent reveal-element">
-                Available for Commissions
-            </div>
-
-            <h1 class="font-heading text-5xl md:text-8xl font-bold mb-8 leading-tight text-white reveal-element delay-100">
-                Design that <br>
-                <span class="glitch-text text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500" data-text="Dominates">Dominates</span>
-            </h1>
-
-            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 reveal-element delay-200 leading-relaxed">
-                I turn generic bottles into <span class="text-white font-semibold">market leaders</span>. FDA-compliant label design for bold brands.
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-5 justify-center reveal-element delay-300">
-                <a href="#portfolio" class="bg-white text-black px-10 py-4 rounded-full font-bold hover:scale-105 transition-transform">
-                    View Work
-                </a>
-                <a href="https://www.fiverr.com/yodhyam_gamedev" class="px-10 py-4 rounded-full font-bold border border-white/20 hover:bg-white/10 transition-colors text-white">
-                    Fiverr Profile
-                </a>
-            </div>
+        <span class="text-accent text-xs font-bold tracking-[0.3em] uppercase mb-6 reveal-element">Graphic Specialist</span>
+        <h1 class="font-heading text-6xl md:text-9xl font-bold mb-8 text-white leading-[0.9] reveal-element delay-100">
+            Visual <br> <span class="glitch-text" data-text="Alchemy">Alchemy</span>
+        </h1>
+        <p class="text-gray-400 max-w-xl text-lg mb-12 reveal-element delay-200 font-light">
+            Packaging that doesn't just sit on the shelf—it <span class="text-white font-medium">screams</span> to be picked up.
+        </p>
+        <div class="flex gap-6 reveal-element delay-300">
+            <a href="#portfolio" class="hover-trigger bg-white text-black px-8 py-4 rounded-full font-bold text-sm uppercase tracking-wide hover:scale-105 transition-transform">View Works</a>
         </div>
     </header>
 
-    <section class="py-24 relative z-10">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16 reveal-element">
-                <h2 class="font-heading text-3xl text-white">The Methodology</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="md:col-span-2 spotlight-group rounded-2xl p-8 reveal-element">
-                    <div class="spotlight-content h-full flex flex-col justify-between">
-                        <i class="fa-solid fa-magnifying-glass text-3xl text-accent mb-6"></i>
-                        <div>
-                            <h3 class="text-2xl font-bold text-white mb-2">1. Strategic Discovery</h3>
-                            <p class="text-gray-400">We don't guess. We analyze your competitor's shelf placement, bottle dimensions, and printing constraints (Flexo vs Digital) before opening Illustrator.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="spotlight-group rounded-2xl p-8 reveal-element">
-                    <div class="spotlight-content">
-                        <i class="fa-solid fa-pen-nib text-3xl text-blue-400 mb-6"></i>
-                        <h3 class="text-xl font-bold text-white mb-2">2. Design</h3>
-                        <p class="text-gray-400 text-sm">Two distinct concepts focused on visual hierarchy and shelf-pop.</p>
-                    </div>
-                </div>
-
-                <div class="spotlight-group rounded-2xl p-8 reveal-element">
-                    <div class="spotlight-content">
-                        <i class="fa-solid fa-shield-halved text-3xl text-green-400 mb-6"></i>
-                        <h3 class="text-xl font-bold text-white mb-2">3. Compliance</h3>
-                        <p class="text-gray-400 text-sm">FDA/EU checks for font sizes, allergen warnings, and barcodes.</p>
-                    </div>
-                </div>
-
-                <div class="md:col-span-2 spotlight-group rounded-2xl p-8 reveal-element">
-                    <div class="spotlight-content h-full flex flex-col justify-between">
-                        <i class="fa-solid fa-box-open text-3xl text-pink-500 mb-6"></i>
-                        <div>
-                            <h3 class="text-2xl font-bold text-white mb-2">4. Production Ready</h3>
-                            <p class="text-gray-400">You get CMYK print files with correct bleeds (3mm), outlined fonts, and embedded images. Plus 3D mockups for your ads.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="portfolio" class="py-24 bg-black relative border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 relative z-10">
-            <div class="flex justify-between items-end mb-12 px-2">
-                <h2 class="font-heading text-4xl font-bold text-white reveal-element">Selected Works</h2>
-                <a href="https://github.com/0bl1vyx/label-portfolio" class="text-gray-500 hover:text-white text-sm transition reveal-element">
-                    <i class="fa-brands fa-github"></i> Repository
-                </a>
-            </div>
-
-            <div id="project-container" class="masonry-grid min-h-[300px]">
-                </div>
-        </div>
-    </section>
-
-    <section class="py-20 border-y border-white/5 bg-[#0a0a0a] overflow-hidden">
-        <div class="marquee-wrapper">
-            <div class="marquee-track" id="reviews-track"></div>
-        </div>
-    </section>
-
-    <footer class="bg-black py-12 border-t border-white/10 text-center">
-        <h2 class="font-heading text-3xl font-bold text-white mb-8">Ready to scale?</h2>
-        <a href="mailto:prystudio@proton.me" class="text-accent hover:text-white text-lg font-bold transition-colors">prystudio@proton.me</a>
-        <div class="mt-8 text-gray-600 text-sm">&copy; 2025 Priyo D.</div>
-    </footer>
-
-    <div id="image-modal" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl hidden opacity-0 transition-all duration-300 flex items-center justify-center p-4" onclick="closeModal()">
-        
-        <button onclick="closeModal()" class="absolute top-6 right-6 text-white/50 hover:text-white text-4xl z-[110]">&times;</button>
-        
-        <div class="relative max-w-7xl w-full h-full md:h-[90vh] flex flex-col md:flex-row gap-8" onclick="event.stopPropagation()">
-            <div class="w-full md:w-3/4 flex items-center justify-center bg-[#050505] rounded-2xl border border-white/10 p-4">
-                <img id="modal-img" src="" class="max-h-full max-w-full object-contain shadow-2xl">
+    <section id="portfolio" class="py-32 px-6 md:px-12 border-t border-white/5 bg-[#080808]">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-20">
+                <h2 class="font-heading text-5xl text-white font-bold reveal-element">Selected Cases</h2>
+                <span class="text-gray-600 text-sm reveal-element">Latest uploads from GitHub</span>
             </div>
             
-            <div class="w-full md:w-1/4 flex flex-col justify-center">
-                <span class="text-accent font-bold tracking-widest text-xs uppercase mb-2">Project Details</span>
-                <h3 id="modal-title" class="font-heading text-3xl text-white mb-6 leading-tight">Title</h3>
-                <p id="modal-desc" class="text-gray-400 text-sm leading-relaxed mb-8">Description goes here.</p>
-                
-                <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="w-full py-4 bg-white text-black rounded-xl font-bold text-center hover:bg-accent hover:text-white transition-all">
-                    Order This Style
+            <div id="project-container" class="masonry-grid min-h-[50vh]"></div>
+        </div>
+    </section>
+
+    <footer class="border-t border-white/5 bg-black py-20 overflow-hidden">
+        <div class="marquee-wrapper mb-20">
+            <div class="marquee-track" id="reviews-track"></div>
+        </div>
+        <div class="text-center">
+            <a href="mailto:prystudio@proton.me" class="font-heading text-4xl md:text-6xl font-bold text-white hover:text-accent transition-colors hover-trigger">Let's Create.</a>
+            <p class="text-gray-600 mt-8 text-sm">&copy; 2025 Priyo D. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="image-modal" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl hidden opacity-0 transition-all duration-500 flex items-center justify-center p-4" onclick="closeModal()">
+        <button onclick="closeModal()" class="absolute top-8 right-8 text-white hover:text-accent text-4xl z-[110] hover-trigger">&times;</button>
+        <div class="relative max-w-7xl w-full h-[85vh] flex flex-col md:flex-row gap-12" onclick="event.stopPropagation()">
+            <div class="w-full md:w-2/3 h-full flex items-center justify-center bg-[#0a0a0a] rounded-lg p-4 border border-white/10">
+                <img id="modal-img" src="" class="max-h-full max-w-full object-contain shadow-2xl">
+            </div>
+            <div class="w-full md:w-1/3 flex flex-col justify-center">
+                <div class="h-1 w-12 bg-accent mb-8"></div>
+                <h3 id="modal-title" class="font-heading text-4xl text-white mb-6 leading-tight"></h3>
+                <p id="modal-desc" class="text-gray-400 text-sm leading-relaxed mb-10 font-light"></p>
+                <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="hover-trigger w-full py-4 border border-white/20 text-white text-center rounded-lg uppercase text-xs font-bold tracking-widest hover:bg-white hover:text-black transition-all">
+                    Order Project
                 </a>
             </div>
         </div>
