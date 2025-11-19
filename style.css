@@ -1,90 +1,100 @@
+/* Base Settings */
+:root {
+    --cursor-x: 0px;
+    --cursor-y: 0px;
+    --spotlight-color: rgba(255, 255, 255, 0.15);
+}
+
+html { scroll-behavior: smooth; }
+body { background-color: #050505; overflow-x: hidden; }
+
+/* 1. CINEMATIC NOISE OVERLAY (The "Premium" Texture) */
+.noise-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
 /* Custom Scrollbar */
-::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #050505; }
-::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #1DBF73; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
+
+/* 2. SPOTLIGHT CARD EFFECT */
+.spotlight-group {
+    position: relative;
+    background: rgba(25, 25, 25, 0.6); /* Darker base */
+    border: 1px solid rgba(255,255,255,0.05);
+    overflow: hidden;
+}
+
+/* The glowing orb following the mouse */
+.spotlight-group::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), var(--spotlight-color), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.spotlight-group:hover::before { opacity: 1; }
+.spotlight-content { position: relative; z-index: 2; }
 
 /* Masonry Grid */
 .masonry-grid { column-count: 1; column-gap: 1.5rem; }
 @media (min-width: 768px) { .masonry-grid { column-count: 2; } }
 @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
-
 .masonry-item { break-inside: avoid; margin-bottom: 1.5rem; }
-
-/* Stats Badges */
-.stat-badge {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 8px 20px;
-    border-radius: 999px;
-    backdrop-filter: blur(10px);
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #e5e7eb;
-    transition: transform 0.3s;
-}
-.stat-badge:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.3); }
 
 /* Infinite Marquee */
 .marquee-wrapper {
     width: 100%;
     overflow: hidden;
     position: relative;
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
 }
-
 .marquee-track {
     display: flex;
     width: max-content;
     gap: 24px;
     animation: marquee 60s linear infinite;
 }
-
-/* Pause on Hover */
-.marquee-track:hover {
-    animation-play-state: paused;
-}
-
-@keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-/* Review Card Styling */
-.review-card {
-    width: 350px;
-    background: #0f0f0f;
-    border: 1px solid rgba(255,255,255,0.08);
-    padding: 24px;
-    border-radius: 16px;
-    flex-shrink: 0;
-    transition: all 0.3s;
-}
-.review-card:hover {
-    border-color: #8b5cf6;
-    background: #141414;
-    transform: translateY(-2px);
-}
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
 /* Animations */
 .reveal-element {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    transform: translateY(40px);
+    filter: blur(10px);
+    transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .reveal-element.visible {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
 }
 
-@keyframes blob {
-    0% { transform: translate(0px, 0px) scale(1); }
-    33% { transform: translate(30px, -50px) scale(1.1); }
-    66% { transform: translate(-20px, 20px) scale(0.9); }
-    100% { transform: translate(0px, 0px) scale(1); }
+/* Glitch Text Effect for Hero Name */
+.glitch-text { position: relative; }
+.glitch-text::before, .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
 }
-.animate-blob { animation: blob 10s infinite; }
-.animation-delay-2000 { animation-delay: 5s; }
+.glitch-text::before { left: 2px; text-shadow: -1px 0 #ff00c1; clip: rect(44px, 450px, 56px, 0); animation: glitch-anim 5s infinite linear alternate-reverse; }
+.glitch-text::after { left: -2px; text-shadow: -1px 0 #00fff9; clip: rect(44px, 450px, 56px, 0); animation: glitch-anim2 5s infinite linear alternate-reverse; }
+
+@keyframes glitch-anim {
+    0% { clip: rect(30px, 9999px, 10px, 0); }
+    5% { clip: rect(70px, 9999px, 90px, 0); }
+    10% { clip: rect(20px, 9999px, 50px, 0); }
+    100% { clip: rect(0, 0, 0, 0); }
+}
