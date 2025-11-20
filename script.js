@@ -4,26 +4,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const repoName = 'label-portfolio';
     const branch = 'main';
     
-    // === 1. GENUINE & SPECIFIC CLIENT REVIEWS ===
+    // === 1. CLIENT REVIEWS (Updated List) ===
     const reviewsTrack = document.getElementById('reviews-track');
     
-    // Updated data with specific industry keywords to sound authentic
     const reviewsData = [
-  { name: "Mike T. (Supplements)", stars: 5, text: "Priyo knows his stuff. The nutrition facts were formatted exactly to our spec and the metallic print file came back flawless." },
-  { name: "Sarah J. (Skincare)", stars: 5, text: "I was worried about legibility on our 1 oz bottles — he nailed the hierarchy. The product looks premium on shelf." },
-  { name: "GreenLeaf Organics", stars: 5, text: "Fast turnaround and zero print issues. The dieline matched our manufacturer's template perfectly." },
-  { name: "VapeCo Europe", stars: 5, text: "Great understanding of EU warning requirements. Saved us a huge compliance headache." },
-  { name: "Coffee Roasters Inc.", stars: 5, text: "Bag label pops and the PSD master file made it easy for us to tweak copy later." },
-  { name: "Hitesh P.", stars: 5, text: "Professional quality — the 3D mockup helped us secure retail placement before printing." },
-  { name: "Amanda B. (Candles)", stars: 5, text: "Beautiful typography and the foil stamping layer was exactly what we asked for." },
-  { name: "FitLife", stars: 4, text: "Clean ingredients panel for a complicated formula. Minor tweaks after first round, but final result was solid." },
-  { name: "TechAccessories", stars: 5, text: "Custom die-cut sticker cut perfectly — vector paths were delivered clean and ready." },
-  { name: "David R.", stars: 5, text: "Excellent communication. He asked about paper and finish up-front which saved time later." },
-  { name: "Nina L. (Beauty)", stars: 5, text: "Turned our vague brief into a luxe label — sales improved after the relaunch." },
-  { name: "Organic Pantry", stars: 5, text: "Provided print-ready PDFs and a PSD master. Our printer ran it with no corrections." },
-  { name: "Bold Brew", stars: 4, text: "Great design sense and speed. We requested an extra color option which was handled quickly." },
-  { name: "KleanSkin Labs", stars: 5, text: "Regulatory layout was crisp and readable — compliance team approved on first review." }
-  ];
+        { name: "Mike T. (Supplements)", stars: 5, text: "Priyo knows his stuff. The nutrition facts were formatted exactly to our spec and the metallic print file came back flawless." },
+        { name: "Sarah J. (Skincare)", stars: 5, text: "I was worried about legibility on our 1 oz bottles — he nailed the hierarchy. The product looks premium on shelf." },
+        { name: "GreenLeaf Organics", stars: 5, text: "Fast turnaround and zero print issues. The dieline matched our manufacturer's template perfectly." },
+        { name: "VapeCo Europe", stars: 5, text: "Great understanding of EU warning requirements. Saved us a huge compliance headache." },
+        { name: "Coffee Roasters Inc.", stars: 5, text: "Bag label pops and the PSD master file made it easy for us to tweak copy later." },
+        { name: "Hitesh P.", stars: 5, text: "Professional quality — the 3D mockup helped us secure retail placement before printing." },
+        { name: "Amanda B. (Candles)", stars: 5, text: "Beautiful typography and the foil stamping layer was exactly what we asked for." },
+        { name: "FitLife", stars: 4, text: "Clean ingredients panel for a complicated formula. Minor tweaks after first round, but final result was solid." },
+        { name: "TechAccessories", stars: 5, text: "Custom die-cut sticker cut perfectly — vector paths were delivered clean and ready." },
+        { name: "David R.", stars: 5, text: "Excellent communication. He asked about paper and finish up-front which saved time later." },
+        { name: "Nina L. (Beauty)", stars: 5, text: "Turned our vague brief into a luxe label — sales improved after the relaunch." },
+        { name: "Organic Pantry", stars: 5, text: "Provided print-ready PDFs and a PSD master. Our printer ran it with no corrections." },
+        { name: "Bold Brew", stars: 4, text: "Great design sense and speed. We requested an extra color option which was handled quickly." },
+        { name: "KleanSkin Labs", stars: 5, text: "Regulatory layout was crisp and readable — compliance team approved on first review." }
+    ];
 
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -34,19 +33,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const shuffledReviews = shuffleArray([...reviewsData]);
-    const fullList = [...shuffledReviews, ...shuffledReviews]; 
+    const fullList = [...shuffledReviews, ...shuffledReviews]; // Duplicate for infinite scroll
     
-    // REWRITTEN TO MATCH YOUR SCREENSHOT STYLE
     if (reviewsTrack) {
         reviewsTrack.innerHTML = fullList.map(r => {
             let starsHtml = '';
             for(let i=0; i<5; i++) {
-                // Using yellow-400 for the golden star look
+                // Gold stars for < 5, Gray for empty if any
                 starsHtml += `<i class="fa-solid fa-star ${i < r.stars ? 'text-yellow-400' : 'text-gray-700'} text-xs"></i>`;
             }
             
+            // Added 'flex-shrink-0' and fixed width to prevent breaking
             return `
-                <div class="w-[350px] bg-[#141414] border border-white/10 p-6 rounded-xl flex-shrink-0 hover:border-brand/30 transition duration-300 group select-none flex flex-col justify-between h-full">
+                <div class="w-[320px] md:w-[360px] bg-[#141414] border border-white/10 p-6 rounded-xl flex-shrink-0 hover:border-brand/30 transition duration-300 group select-none flex flex-col justify-between h-full">
                     
                     <div class="flex items-center justify-between mb-6">
                          <div class="flex gap-1">${starsHtml}</div>
@@ -69,24 +68,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }).join('');
     }
 
-    // === 2. GITHUB PORTFOLIO LOADER ===
+    // === 2. GITHUB LOADER (Standard) ===
     const container = document.getElementById('project-container');
 
     async function loadProjects() {
         const apiUrl = `https://api.github.com/repos/${username}/${repoName}/contents/projects?ref=${branch}`;
 
         try {
-            container.innerHTML = '<div class="col-span-full text-center py-20 text-gray-500 animate-pulse">Loading design gallery...</div>';
+            container.innerHTML = '<div class="col-span-full text-center py-20 text-gray-500 animate-pulse">Loading gallery...</div>';
             
             const response = await fetch(apiUrl);
-            if (!response.ok) throw new Error('GitHub API Limit or Error');
+            if (!response.ok) throw new Error('GitHub API Limit');
             const files = await response.json();
 
             container.innerHTML = '';
             const imageFiles = files.filter(file => file.name.match(/\.(jpg|jpeg|png|gif|webp)$/i));
 
             if (imageFiles.length === 0) {
-                container.innerHTML = '<div class="col-span-full text-center text-gray-500">Portfolio is updating. Check back soon.</div>';
+                container.innerHTML = '<div class="col-span-full text-center text-gray-500">Gallery updating.</div>';
                 return;
             }
 
@@ -96,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const txtFileObj = files.find(f => f.name === txtFileName);
 
                 let title = baseName.replace(/-/g, ' ');
-                let desc = "Premium Packaging Design aimed at increasing shelf visibility.";
+                let desc = "Premium Packaging Design.";
 
                 if (txtFileObj) {
                     try {
@@ -107,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             title = lines[0]; 
                             desc = lines.slice(1).join('<br>'); 
                         }
-                    } catch (e) { console.log("No text file found"); }
+                    } catch (e) {}
                 }
 
                 const card = document.createElement('div');
@@ -126,20 +125,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.addEventListener('click', () => openModal(imgFile.download_url, title, desc));
                 container.appendChild(card);
             }
-            
             setTimeout(initScrollReveal, 100);
-            
         } catch (error) {
-            console.error(error);
-            container.innerHTML = `
-                <div class="col-span-full text-center py-10">
-                    <p class="text-gray-400 mb-4">Portfolio is loading from external source.</p>
-                    <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="text-brand hover:underline font-bold border border-brand/50 px-6 py-3 rounded-full hover:bg-brand hover:text-white transition">View on Fiverr &rarr;</a>
-                </div>`;
+            container.innerHTML = `<div class="col-span-full text-center py-10 text-gray-500">Portfolio loading... <a href="https://www.fiverr.com/yodhyam_gamedev" class="text-brand underline">Visit Fiverr</a></div>`;
         }
     }
 
-    // === 3. MODAL & UTILS ===
+    // === 3. UTILS ===
     const modal = document.getElementById('image-modal');
     const modalImg = document.getElementById('modal-img');
     const modalTitle = document.getElementById('modal-title');
@@ -164,31 +156,22 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-            closeModal();
-        }
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
     });
 
     function initScrollReveal() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
-        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-        
+        }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     }
 
     window.toggleFaq = (element) => {
         const isActive = element.classList.contains('active');
-        document.querySelectorAll('.faq-item').forEach(el => {
-            el.classList.remove('active');
-        });
-        if (!isActive) {
-            element.classList.add('active');
-        }
+        document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+        if (!isActive) element.classList.add('active');
     };
 
     loadProjects();
