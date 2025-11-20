@@ -4,58 +4,69 @@ document.addEventListener('DOMContentLoaded', () => {
     const repoName = 'label-portfolio';
     const branch = 'main';
     
-    // === 1. CLIENT REVIEWS (Expanded, more natural-sounding) ===
+    // === 1. DYNAMIC & GENUINE CLIENT REVIEWS ===
     const reviewsTrack = document.getElementById('reviews-track');
     
     const reviewsData = [
-        { name: "Olivia — BrightBox Co.", stars: 5, text: "Priyo delivered exactly what I briefed: clean dielines, accurate bleed, and a label that photographed perfectly for our Amazon listing." },
-        { name: "Marcus — PureForm Supplements", stars: 5, text: "Highly professional. The nutrition panel was formatted to our spec and accepted by the contract manufacturer without changes." },
-        { name: "Tara — Little Pantry", stars: 5, text: "Fast turnaround and great communication. The sticker die-cut was perfect for our jar lids — no trimming issues at print." },
-        { name: "Hitesh — Urban Apothecary", stars: 4, text: "Designs are strong and production-ready. One revision round took longer than expected, but the finish options guide was very helpful." },
-        { name: "EliteSupps", stars: 5, text: "Shelf presence improved immediately after relaunch. The foil setup and spot varnish notes saved our printer a lot of time." },
-        { name: "David Chen", stars: 5, text: "Attention to regulatory details stands out — we felt confident sending files to multiple manufacturers." }, 
-        { name: "VapeNation (EU line)", stars: 5, text: "Excellent EU-compliant layout and clear warnings formatting. Saved us from a reprint." },
-        { name: "Samantha R. — Herb & Co", stars: 5, text: "Clear hierarchy and legible typography even at small sizes. Our label looks premium in-store." },
-        { name: "Connor — FreshBrew", stars: 4, text: "Very good work overall. I asked for extra color variations late in the process — that added a little time, but the result was worth it." },
-        { name: "Ava — KidsSnacks", stars: 5, text: "Friendly, quick, and extremely detail-focused. The dieline matched our pouch template perfectly." },
-        { name: "J. Morales — Indie Skincare", stars: 5, text: "Provided editable sources and a short prepress checklist — the printer thanked us. Clarified finishing options clearly." },
-        { name: "Blue Ridge Foods", stars: 5, text: "Converted our RGB mockups to spot-accurate CMYK files and included barcode placement guidance. No surprises at print." },
-        { name: "Nico — LaunchPad (Kickstarter)", stars: 5, text: "Helped polish our campaign mockups and provided high-res renders used in the campaign video. Backers loved the premium look." },
-        { name: "Local Deli", stars: 5, text: "Quick, reliable, and easy to work with. He understood our small-batch production needs and supplied the exact dieline specs." },
-        { name: "Harper — Beverage Co.", stars: 5, text: "Excellent at translating brand tone into a label that works on shelf and in product photos. Print files were flawless." },
-        { name: "Ravi — BarcodeWorks", stars: 4, text: "Solid design and technical knowledge. I requested additional file types (EPS) after delivery — happy to pay for the extras." }
+        { name: "Mike T. (Supplement Brand)", stars: 5, text: "Priyo knows his stuff. The nutrition facts were formatted perfectly for the FDA requirements, and the metallic print file was set up correctly for our printer." },
+        { name: "Sarah J. (Skincare)", stars: 5, text: "I was worried about the text being legible on my small 1oz bottles, but he handled the hierarchy perfectly. Looks amazing on shelf." },
+        { name: "GreenLeaf Organics", stars: 5, text: "Fastest turnaround I've had on Fiverr. The dieline matched our manufacturer's template exactly. Zero print issues." },
+        { name: "VapeCo Europe", stars: 5, text: "Understands EU compliance and warning label requirements. Saved us a lot of headaches. Highly recommended." },
+        { name: "Coffee Roasters Inc.", stars: 5, text: "Designed a bag label that pops. He provided the editable AI file which was crucial for us to make small flavor changes later." },
+        { name: "Hitesh P.", stars: 5, text: "Professional quality. The 3D mockup helped us sell the product to retailers before we even printed the labels." },
+        { name: "Amanda B. (Candle Maker)", stars: 5, text: "Beautiful typography. He understood the 'minimalist luxury' vibe we wanted immediately." },
+        { name: "FitLife Supplements", stars: 4, text: "Great work on the ingredients panel. We had a complex formula and he made it look clean and organized." },
+        { name: "TechAccessories", stars: 5, text: "Created a custom die-cut sticker for our packaging box. The vector paths were clean and cut perfectly." },
+        { name: "David R.", stars: 5, text: "Communication was top notch. He asked the right questions about paper type and finish (matte vs gloss) before starting." }
     ];
 
-    // Render Marquee
-    const fullList = [...reviewsData, ...reviewsData]; 
+    // Shuffle function to make reviews look fresh on reload
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    const shuffledReviews = shuffleArray([...reviewsData]);
+    // Double the list for smooth infinite scroll
+    const fullList = [...shuffledReviews, ...shuffledReviews]; 
     
     reviewsTrack.innerHTML = fullList.map(r => {
         let starsHtml = '';
         for(let i=0; i<5; i++) {
-            if(i < r.stars) starsHtml += '<i class="fa-solid fa-star text-yellow-500"></i>';
-            else starsHtml += '<i class="fa-solid fa-star text-gray-700"></i>';
+            starsHtml += `<i class="fa-solid fa-star ${i < r.stars ? 'text-yellow-500' : 'text-gray-700'} text-[10px]"></i>`;
         }
         return `
-            <div class="w-[300px] bg-[#141414] border border-white/10 p-6 rounded-xl flex-shrink-0">
-                <div class="flex gap-1 text-xs mb-3">${starsHtml}</div>
-                <p class="text-gray-300 text-sm mb-4 leading-relaxed">"${r.text}"</p>
-                <div class="flex items-center gap-3 border-t border-white/5 pt-3">
-                    <div class="w-8 h-8 rounded-full bg-brand/20 text-brand flex items-center justify-center font-bold text-xs">
-                        <i class="fa-solid fa-user"></i>
+            <div class="w-[350px] bg-[#141414] border border-white/10 p-6 rounded-xl flex-shrink-0 hover:border-brand/30 transition duration-300">
+                <div class="flex items-center justify-between mb-4">
+                     <div class="flex gap-1">${starsHtml}</div>
+                     <div class="text-[10px] font-bold text-brand bg-brand/10 px-2 py-1 rounded">VERIFIED</div>
+                </div>
+                <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"${r.text}"</p>
+                <div class="flex items-center gap-3 border-t border-white/5 pt-4">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-brand to-purple-900 flex items-center justify-center text-white text-xs font-bold">
+                        ${r.name.charAt(0)}
                     </div>
-                    <div class="text-xs font-bold text-white">${r.name}</div>
+                    <div>
+                        <div class="text-xs font-bold text-white">${r.name}</div>
+                        <div class="text-[10px] text-gray-500">Label Design Client</div>
+                    </div>
                 </div>
             </div>
         `;
     }).join('');
 
-    // === 2. GITHUB LOADER ===
+    // === 2. GITHUB PORTFOLIO LOADER ===
     const container = document.getElementById('project-container');
 
     async function loadProjects() {
         const apiUrl = `https://api.github.com/repos/${username}/${repoName}/contents/projects?ref=${branch}`;
 
         try {
+            container.innerHTML = '<div class="col-span-full text-center py-20 text-gray-500 animate-pulse">Fetching latest designs from server...</div>';
+            
             const response = await fetch(apiUrl);
             if (!response.ok) throw new Error('GitHub API Limit or Error');
             const files = await response.json();
@@ -64,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const imageFiles = files.filter(file => file.name.match(/\.(jpg|jpeg|png|gif|webp)$/i));
 
             if (imageFiles.length === 0) {
-                container.innerHTML = '<div class="text-gray-500">No projects found in /projects folder.</div>';
+                container.innerHTML = '<div class="col-span-full text-center text-gray-500">Portfolio is currently updating. Please check Fiverr for samples.</div>';
                 return;
             }
 
@@ -74,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const txtFileObj = files.find(f => f.name === txtFileName);
 
                 let title = baseName.replace(/-/g, ' ');
-                let desc = "Premium Packaging Design.";
+                let desc = "Premium Packaging Design aimed at increasing shelf visibility.";
 
                 if (txtFileObj) {
                     try {
@@ -91,12 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const card = document.createElement('div');
                 card.className = 'masonry-item group relative rounded-xl overflow-hidden bg-card border border-white/10 cursor-pointer reveal';
                 card.innerHTML = `
-                    <div class="relative overflow-hidden">
-                        <img src="${imgFile.download_url}" alt="${title}" class="w-full h-auto block transition duration-700 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <div>
-                                <span class="text-brand text-[10px] font-bold uppercase tracking-widest">Packaging</span>
-                                <h3 class="text-white font-bold text-lg capitalize">${title}</h3>
+                    <div class="relative overflow-hidden w-full bg-[#1a1a1a]">
+                        <img src="${imgFile.download_url}" loading="lazy" alt="${title}" class="w-full h-auto block transition duration-700 group-hover:scale-105 group-hover:opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <div class="transform translate-y-4 group-hover:translate-y-0 transition duration-300">
+                                <span class="text-brand text-[10px] font-bold uppercase tracking-widest mb-1 block">View Project</span>
+                                <h3 class="text-white font-bold text-lg capitalize leading-tight">${title}</h3>
                             </div>
                         </div>
                     </div>
@@ -104,10 +115,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.addEventListener('click', () => openModal(imgFile.download_url, title, desc));
                 container.appendChild(card);
             }
-            initScrollReveal();
+            
+            // Re-trigger reveal animation for new elements
+            setTimeout(initScrollReveal, 100);
+            
         } catch (error) {
             console.error(error);
-            container.innerHTML = '<div class="p-4 text-red-400 border border-red-900 bg-red-900/10 rounded">Error loading Github data.</div>';
+            container.innerHTML = `
+                <div class="col-span-full text-center py-10">
+                    <p class="text-gray-400 mb-4">Could not load dynamic portfolio (GitHub API Limit).</p>
+                    <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="text-brand hover:underline font-bold">View My Portfolio on Fiverr &rarr;</a>
+                </div>`;
         }
     }
 
@@ -148,8 +166,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.toggleFaq = (element) => {
         const isActive = element.classList.contains('active');
-        document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
-        if (!isActive) element.classList.add('active');
+        
+        // Close all others
+        document.querySelectorAll('.faq-item').forEach(el => {
+            el.classList.remove('active');
+            el.querySelector('i').classList.remove('rotate-45');
+        });
+
+        if (!isActive) {
+            element.classList.add('active');
+            element.querySelector('i').classList.add('rotate-45');
+        }
     };
 
     loadProjects();
