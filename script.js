@@ -4,17 +4,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const repoName = 'label-portfolio';
     const branch = 'main';
     
-    // === 1. CLIENT REVIEWS (Updated with your specific texts) ===
+    // === 1. CLIENT REVIEWS (Expanded, more natural-sounding) ===
     const reviewsTrack = document.getElementById('reviews-track');
     
     const reviewsData = [
-        { name: "Amazon Seller", stars: 5, text: "Exactly what I needed. Clean, modern, and 100% print-ready. My manufacturer approved it instantly." },
-        { name: "Supplement Brand", stars: 5, text: "Best label designer I’ve worked with. He understands compliance better than most agencies." },
-        { name: "Food Startup", stars: 5, text: "Professional, fast, and detail-oriented. Saved me days of back-and-forth with my print shop." },
-        { name: "Sarah Jenkins", stars: 4, text: "Great design work. Took a little longer than expected for the revision, but the final result was perfect." },
-        { name: "EliteSupps", stars: 5, text: "Boosted our shelf presence immediately. The metallic foil setup was perfect." },
-        { name: "David Chen", stars: 5, text: "I appreciate the focus on FDA guidelines. It gives me peace of mind." }, 
-        { name: "VapeNation", stars: 5, text: "Sick designs for our e-liquid line. Totally compliant with EU laws." }
+        { name: "Olivia — BrightBox Co.", stars: 5, text: "Priyo delivered exactly what I briefed: clean dielines, accurate bleed, and a label that photographed perfectly for our Amazon listing." },
+        { name: "Marcus — PureForm Supplements", stars: 5, text: "Highly professional. The nutrition panel was formatted to our spec and accepted by the contract manufacturer without changes." },
+        { name: "Tara — Little Pantry", stars: 5, text: "Fast turnaround and great communication. The sticker die-cut was perfect for our jar lids — no trimming issues at print." },
+        { name: "Hitesh — Urban Apothecary", stars: 4, text: "Designs are strong and production-ready. One revision round took longer than expected, but the finish options guide was very helpful." },
+        { name: "EliteSupps", stars: 5, text: "Shelf presence improved immediately after relaunch. The foil setup and spot varnish notes saved our printer a lot of time." },
+        { name: "David Chen", stars: 5, text: "Attention to regulatory details stands out — we felt confident sending files to multiple manufacturers." }, 
+        { name: "VapeNation (EU line)", stars: 5, text: "Excellent EU-compliant layout and clear warnings formatting. Saved us from a reprint." },
+        { name: "Samantha R. — Herb & Co", stars: 5, text: "Clear hierarchy and legible typography even at small sizes. Our label looks premium in-store." },
+        { name: "Connor — FreshBrew", stars: 4, text: "Very good work overall. I asked for extra color variations late in the process — that added a little time, but the result was worth it." },
+        { name: "Ava — KidsSnacks", stars: 5, text: "Friendly, quick, and extremely detail-focused. The dieline matched our pouch template perfectly." },
+        { name: "J. Morales — Indie Skincare", stars: 5, text: "Provided editable sources and a short prepress checklist — the printer thanked us. Clarified finishing options clearly." },
+        { name: "Blue Ridge Foods", stars: 5, text: "Converted our RGB mockups to spot-accurate CMYK files and included barcode placement guidance. No surprises at print." },
+        { name: "Nico — LaunchPad (Kickstarter)", stars: 5, text: "Helped polish our campaign mockups and provided high-res renders used in the campaign video. Backers loved the premium look." },
+        { name: "Local Deli", stars: 5, text: "Quick, reliable, and easy to work with. He understood our small-batch production needs and supplied the exact dieline specs." },
+        { name: "Harper — Beverage Co.", stars: 5, text: "Excellent at translating brand tone into a label that works on shelf and in product photos. Print files were flawless." },
+        { name: "Ravi — BarcodeWorks", stars: 4, text: "Solid design and technical knowledge. I requested additional file types (EPS) after delivery — happy to pay for the extras." }
     ];
 
     // Render Marquee
