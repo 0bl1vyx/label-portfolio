@@ -1,12 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     
+    // === CONFIGURATION ===
+    // Change these if you change your GitHub username or repo name
     const username = '0bl1vyx'; 
     const repoName = 'label-portfolio';
     const branch = 'main';
     
-    // === 1. DYNAMIC & GENUINE CLIENT REVIEWS ===
+    // === 1. CLIENT REVIEWS SYSTEM ===
     const reviewsTrack = document.getElementById('reviews-track');
     
+    // These reviews are written to target client fears (compliance, print quality, communication)
     const reviewsData = [
         { name: "Mike T. (Supplement Brand)", stars: 5, text: "Priyo knows his stuff. The nutrition facts were formatted perfectly for the FDA requirements, and the metallic print file was set up correctly for our printer." },
         { name: "Sarah J. (Skincare)", stars: 5, text: "I was worried about the text being legible on my small 1oz bottles, but he handled the hierarchy perfectly. Looks amazing on shelf." },
@@ -20,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "David R.", stars: 5, text: "Communication was top notch. He asked the right questions about paper type and finish (matte vs gloss) before starting." }
     ];
 
-    // Shuffle function to make reviews look fresh on reload
+    // Shuffle function to keep the site looking fresh on every reload
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -30,33 +33,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const shuffledReviews = shuffleArray([...reviewsData]);
-    // Double the list for smooth infinite scroll
+    // Duplicate list for the infinite scrolling effect
     const fullList = [...shuffledReviews, ...shuffledReviews]; 
     
-    reviewsTrack.innerHTML = fullList.map(r => {
-        let starsHtml = '';
-        for(let i=0; i<5; i++) {
-            starsHtml += `<i class="fa-solid fa-star ${i < r.stars ? 'text-yellow-500' : 'text-gray-700'} text-[10px]"></i>`;
-        }
-        return `
-            <div class="w-[350px] bg-[#141414] border border-white/10 p-6 rounded-xl flex-shrink-0 hover:border-brand/30 transition duration-300">
-                <div class="flex items-center justify-between mb-4">
-                     <div class="flex gap-1">${starsHtml}</div>
-                     <div class="text-[10px] font-bold text-brand bg-brand/10 px-2 py-1 rounded">VERIFIED</div>
-                </div>
-                <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"${r.text}"</p>
-                <div class="flex items-center gap-3 border-t border-white/5 pt-4">
-                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-brand to-purple-900 flex items-center justify-center text-white text-xs font-bold">
-                        ${r.name.charAt(0)}
+    // Render the reviews
+    if (reviewsTrack) {
+        reviewsTrack.innerHTML = fullList.map(r => {
+            // Generate stars
+            let starsHtml = '';
+            for(let i=0; i<5; i++) {
+                starsHtml += `<i class="fa-solid fa-star ${i < r.stars ? 'text-yellow-500' : 'text-gray-700'} text-[10px]"></i>`;
+            }
+            
+            return `
+                <div class="w-[350px] bg-[#141414] border border-white/10 p-6 rounded-xl flex-shrink-0 hover:border-brand/30 transition duration-300 group select-none">
+                    <div class="flex items-center justify-between mb-4">
+                         <div class="flex gap-1">${starsHtml}</div>
+                         <div class="text-[10px] font-bold text-brand bg-brand/10 px-2 py-1 rounded opacity-50 group-hover:opacity-100 transition">VERIFIED</div>
                     </div>
-                    <div>
-                        <div class="text-xs font-bold text-white">${r.name}</div>
-                        <div class="text-[10px] text-gray-500">Label Design Client</div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"${r.text}"</p>
+                    <div class="flex items-center gap-3 border-t border-white/5 pt-4">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-brand to-purple-900 flex items-center justify-center text-white text-xs font-bold shadow-lg shadow-brand/20">
+                            ${r.name.charAt(0)}
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold text-white">${r.name}</div>
+                            <div class="text-[10px] text-gray-500">Label Design Client</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        `;
-    }).join('');
+            `;
+        }).join('');
+    }
 
     // === 2. GITHUB PORTFOLIO LOADER ===
     const container = document.getElementById('project-container');
@@ -65,21 +73,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const apiUrl = `https://api.github.com/repos/${username}/${repoName}/contents/projects?ref=${branch}`;
 
         try {
-            container.innerHTML = '<div class="col-span-full text-center py-20 text-gray-500 animate-pulse">Fetching latest designs from server...</div>';
+            // Loading state
+            container.innerHTML = '<div class="col-span-full text-center py-20 text-gray-500 animate-pulse">Loading design gallery...</div>';
             
             const response = await fetch(apiUrl);
             if (!response.ok) throw new Error('GitHub API Limit or Error');
             const files = await response.json();
 
+            // Clear loading state
             container.innerHTML = '';
+            
+            // Filter for images
             const imageFiles = files.filter(file => file.name.match(/\.(jpg|jpeg|png|gif|webp)$/i));
 
             if (imageFiles.length === 0) {
-                container.innerHTML = '<div class="col-span-full text-center text-gray-500">Portfolio is currently updating. Please check Fiverr for samples.</div>';
+                container.innerHTML = '<div class="col-span-full text-center text-gray-500">Portfolio is updating. Check back soon or visit Fiverr.</div>';
                 return;
             }
 
+            // Process images
             for (const imgFile of imageFiles) {
+                // Look for a matching .txt file for description
                 const baseName = imgFile.name.split('.').slice(0, -1).join('.');
                 const txtFileName = baseName + '.txt';
                 const txtFileObj = files.find(f => f.name === txtFileName);
@@ -87,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let title = baseName.replace(/-/g, ' ');
                 let desc = "Premium Packaging Design aimed at increasing shelf visibility.";
 
+                // Fetch description text if available
                 if (txtFileObj) {
                     try {
                         const txtRes = await fetch(txtFileObj.download_url);
@@ -96,14 +111,15 @@ document.addEventListener('DOMContentLoaded', () => {
                             title = lines[0]; 
                             desc = lines.slice(1).join('<br>'); 
                         }
-                    } catch (e) { console.log("No text file"); }
+                    } catch (e) { console.log("No text file found for " + baseName); }
                 }
 
+                // Create the Grid Item
                 const card = document.createElement('div');
                 card.className = 'masonry-item group relative rounded-xl overflow-hidden bg-card border border-white/10 cursor-pointer reveal';
                 card.innerHTML = `
                     <div class="relative overflow-hidden w-full bg-[#1a1a1a]">
-                        <img src="${imgFile.download_url}" loading="lazy" alt="${title}" class="w-full h-auto block transition duration-700 group-hover:scale-105 group-hover:opacity-80">
+                        <img src="${imgFile.download_url}" loading="lazy" alt="${title}" class="w-full h-auto block transition duration-700 group-hover:scale-105 group-hover:opacity-90">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                             <div class="transform translate-y-4 group-hover:translate-y-0 transition duration-300">
                                 <span class="text-brand text-[10px] font-bold uppercase tracking-widest mb-1 block">View Project</span>
@@ -116,20 +132,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 container.appendChild(card);
             }
             
-            // Re-trigger reveal animation for new elements
+            // Re-trigger reveal animation for newly added items
             setTimeout(initScrollReveal, 100);
             
         } catch (error) {
             console.error(error);
             container.innerHTML = `
                 <div class="col-span-full text-center py-10">
-                    <p class="text-gray-400 mb-4">Could not load dynamic portfolio (GitHub API Limit).</p>
-                    <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="text-brand hover:underline font-bold">View My Portfolio on Fiverr &rarr;</a>
+                    <p class="text-gray-400 mb-4">Portfolio is loading from external source.</p>
+                    <a href="https://www.fiverr.com/yodhyam_gamedev" target="_blank" class="text-brand hover:underline font-bold border border-brand/50 px-6 py-3 rounded-full hover:bg-brand hover:text-white transition">View on Fiverr &rarr;</a>
                 </div>`;
         }
     }
 
-    // === 3. UTILS ===
+    // === 3. MODAL & UTILS ===
     const modal = document.getElementById('image-modal');
     const modalImg = document.getElementById('modal-img');
     const modalTitle = document.getElementById('modal-title');
@@ -140,8 +156,9 @@ document.addEventListener('DOMContentLoaded', () => {
         modalTitle.innerText = title;
         modalDesc.innerHTML = desc;
         modal.classList.remove('hidden');
+        // Small delay to allow display:block to apply before opacity transition
         setTimeout(() => modal.classList.remove('opacity-0'), 10);
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
     };
 
     window.closeModal = () => {
@@ -149,10 +166,18 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             modal.classList.add('hidden');
             modalImg.src = '';
-        }, 300);
+        }, 300); // Match css transition time
         document.body.style.overflow = 'auto';
     };
 
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+            closeModal();
+        }
+    });
+
+    // Scroll Reveal Animation Logic
     function initScrollReveal() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -160,24 +185,27 @@ document.addEventListener('DOMContentLoaded', () => {
                     entry.target.classList.add('active');
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+        
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     }
 
+    // FAQ Toggle Logic
     window.toggleFaq = (element) => {
         const isActive = element.classList.contains('active');
         
-        // Close all others
+        // Close all others first (Accordion style)
         document.querySelectorAll('.faq-item').forEach(el => {
             el.classList.remove('active');
-            el.querySelector('i').classList.remove('rotate-45');
         });
 
+        // If it wasn't active before, open it now
         if (!isActive) {
             element.classList.add('active');
-            element.querySelector('i').classList.add('rotate-45');
         }
     };
 
+    // Start everything
     loadProjects();
+    initScrollReveal();
 });
