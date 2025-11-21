@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             setTimeout(initScrollReveal, 100);
         } catch (error) {
-            container.innerHTML = `<div class="col-span-full text-center py-10 text-gray-500">Portfolio loading... <a href="https://www.fiverr.com/yodhyam_gamedev" class="text-brand underline">Visit Fiverr</a></div>`;
+            container.innerHTML = `<div class="col-span-full text-center py-10 text-gray-500">Portfolio loading... <a href="https://www.fiverr.com/s/o8mxwNb" class="text-brand underline">Visit Fiverr</a></div>`;
         }
     }
 
